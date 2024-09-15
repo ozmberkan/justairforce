@@ -3,7 +3,7 @@ import airforcecherry from "~/assets/Products/15.jpeg";
 
 const AirForceCherry = () => {
   return (
-    <div className="flex justify-start items-center w-full bg-white p-12 gap-x-5">
+    <div className="flex justify-start items-center w-full bg-white p-12 gap-x-5 flex-grow">
       <img
         src={airforcecherry}
         alt="airforcecherry"

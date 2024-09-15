@@ -3,7 +3,7 @@ import airforceone from "~/assets/Products/1.jpeg";
 
 const AirforceOne = () => {
   return (
-    <div className="flex justify-start items-center w-full bg-white p-12 gap-x-5">
+    <div className="flex justify-start items-center w-full bg-white p-12 gap-x-5 flex-grow">
       <img
         src={airforceone}
         alt="airforceOne"
