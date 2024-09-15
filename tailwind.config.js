@@ -7,9 +7,9 @@ export default {
         poppins: ["Poppins", "sans-serif"],
       },
       backgroundImage: {
-        banner: "url('./src/assets/Banners/Banner.png')",
-        bannerHistory: "url('./src/assets/Banners/bannerofhistory.jpg')",
-        appBanner: "url('./src/assets/Svg/appBanner.svg')",
+        banner: "url('./Banner.png')",
+        bannerHistory: "url('./bannerofhistory.jpg')",
+        appBanner: "url('./appBanner.svg')",
       },
     },
   },
