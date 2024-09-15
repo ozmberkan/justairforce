@@ -49,9 +49,9 @@ export const navTabs = [
 ];
 
 export const rightTab = [
-  { id: 1, icon: FiShoppingCart, href: "#" },
-  { id: 2, icon: FiUser, href: "/login" },
-  { id: 3, icon: AiOutlineUserAdd, href: "/register" },
+  { id: 1, icon: FiShoppingCart, href: "#", label:"Sepet" },
+  { id: 2, icon: FiUser, href: "/login",label:"Giriş Yap" },
+  { id: 3, icon: AiOutlineUserAdd, href: "/register", label:"Kayıt Ol" },
 ];
 
 export const allProducts = [
@@ -105,4 +105,16 @@ export const dailyWomen = [
   { id: "AF013", name: "Air Force", image: Shoe13, price: 100 },
   { id: "AF014", name: "Air Force", image: Shoe14, price: 100 },
   { id: "AF015", name: "Air Force", image: Shoe15, price: 100 },
+];
+
+
+export const registerForm = [
+  {id: 1,type: "text",name: "displayName",placeholder: "Ad Soyad",},
+  {id: 2,type: "text",name: "email",placeholder: "E-Posta",},
+  {id: 3,type: "password",name: "password",placeholder: "Parola",},
+];
+
+export const loginForm = [
+  {id: 1,type: "text",name: "email",placeholder: "E-Posta",},
+  {id: 2,type: "password",name: "password",placeholder: "Parola",},
 ];
