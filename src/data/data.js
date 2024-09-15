@@ -49,9 +49,8 @@ export const navTabs = [
 ];
 
 export const rightTab = [
-  { id: 1, icon: FiShoppingCart, href: "#", label:"Sepet" },
-  { id: 2, icon: FiUser, href: "/login",label:"Giriş Yap" },
-  { id: 3, icon: AiOutlineUserAdd, href: "/register", label:"Kayıt Ol" },
+  { id: 1, icon: FiUser, href: "/login",label:"Giriş Yap" },
+  { id: 2, icon: AiOutlineUserAdd, href: "/register", label:"Kayıt Ol" },
 ];
 
 export const allProducts = [

@@ -49,24 +49,32 @@ const Navbar = () => {
         {user ? (
           <div className="flex gap-x-5 w-full ">
             <Link
+              to="/cart"
+              className={`text-gray-700 hover:bg-gray-100 px-2 py-1 rounded-md text-base font-medium flex gap-x-2 items-center border`}
+            >
+              <FiUser />
+              Sepetim
+            </Link>
+            <Link
               to="/profile"
-              className={`text-gray-700 hover:bg-gray-100 px-2 py-1 rounded-md text-base font-medium flex gap-x-2 items-center`}
+              className={`text-gray-700 hover:bg-gray-100 px-2 py-1 rounded-md text-base font-medium flex gap-x-2 items-center border`}
             >
               <FiUser />
               Profilim
             </Link>
             <Link
               to="/myfavorites"
-              className="text-gray-700 hover:bg-gray-100 px-2 py-1 rounded-md font-medium flex gap-x-3 items-center w-full"
+              className="text-gray-700 hover:bg-gray-100 px-3 py-2 rounded-md text-base font-medium flex gap-x-2 items-center border"
             >
               <FaHeart />
               Favorilerim
             </Link>
             <button
               onClick={logOut}
-              className="text-gray-700 hover:bg-gray-100 px-2 py-1 rounded-md font-medium flex gap-x-3 items-center w-full"
+              className="text-gray-700 hover:bg-gray-100 px-3 py-2 rounded-md text-base font-medium flex gap-x-2 items-center border"
             >
               <FiLogOut />
+              Çıkış Yap
             </button>
           </div>
         ) : (

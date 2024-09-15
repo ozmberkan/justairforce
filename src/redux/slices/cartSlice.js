@@ -4,17 +4,16 @@ const initialState = {
   cart: [],
 };
 
-export const userSlice = createSlice({
-  name: 'user',
+export const cartSlice = createSlice({
+  name: 'cart',
   initialState,
   reducers: {
     setCart: (state, action) => {
-      state.cart = [...state.cart, ...action.payload];
-      localStorage.setItem('user', JSON.stringify(state.cart));
+      state.cart = [...state.cart, action.payload];
     },
   },
 });
 
-export const { setCart } = userSlice.actions;
+export const { setCart } = cartSlice.actions;
 
-export default userSlice.reducer;
+export default cartSlice.reducer;

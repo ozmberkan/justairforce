@@ -22,6 +22,7 @@ import Profile from "./pages/Profile/Profile";
 import MyFavorites from "./pages/Profile/MyFavorites";
 import { useSelector } from "react-redux";
 import Footer from "./components/Footer/Footer";
+import Cart from "./pages/Profile/Cart";
 
 const App = () => {
   const { user } = useSelector((store) => store.user);
@@ -58,6 +59,10 @@ const App = () => {
           <Route
             path="/myfavorites"
             element={user ? <MyFavorites /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/cart"
+            element={user ? <Cart /> : <Navigate to="/login" />}
           />
         </Routes>
         <Footer />

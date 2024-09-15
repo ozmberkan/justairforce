@@ -2,8 +2,27 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import { bestsellersMen } from "~/data/data";
+import { useDispatch, useSelector } from "react-redux";
+import { addCartToUser } from "~/redux/slices/userSlice";
+import { arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { db } from "~/firebase/firebase";
 
 const MenBest = () => {
+  const { user } = useSelector((store) => store.user);
+  const dispatch = useDispatch();
+
+  const addToCart = async (item) => {
+    if (!user) {
+      alert("Ürünü sepete eklemek için giriş yapmalısınız.");
+      return;
+    }
+    const userRef = doc(db, "users", user.uid);
+    await updateDoc(userRef, {
+      cart: arrayUnion(item),
+    });
+    dispatch(addCartToUser(item));
+  };
+
   return (
     <div className="w-full px-7 py-6 flex flex-col gap-y-6">
       <h1 className="text-3xl font-semibold text-gray-700">
@@ -21,7 +40,10 @@ const MenBest = () => {
                 <span>{sh.price}₺</span>
               </div>
               <div className="flex gap-x-2">
-                <button className="bg-emerald-100 text-emerald-500 p-2 rounded-md hover:bg-emerald-200 hover:text-emerald-600">
+                <button
+                  onClick={() => addToCart(sh)}
+                  className="bg-emerald-100 text-emerald-500 p-2 rounded-md hover:bg-emerald-200 hover:text-emerald-600"
+                >
                   Sepete Ekle
                 </button>
                 <Link
