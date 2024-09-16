@@ -18,7 +18,7 @@ const AllProducts = () => {
   const addToCart = async (item) => {
     try {
       if (!user) {
-        alert("Ürünü sepete eklemek için giriş yapmalısınız.");
+        toast.error("Ürünü sepete eklemek için giriş yapmalısınız.");
         return;
       }
 
@@ -49,6 +49,7 @@ const AllProducts = () => {
         });
 
         dispatch(addCartToUser(newItem));
+
         localStorage.setItem(
           "user",
           JSON.stringify({ ...user, cart: [...user.cart, newItem] })

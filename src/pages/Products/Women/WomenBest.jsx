@@ -3,7 +3,11 @@ import { bestsellersWomen } from "~/data/data";
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { addCartToUser, addFavToUser } from "~/redux/slices/userSlice";
+import {
+  addCartToUser,
+  addFavToUser,
+  updateUserCart,
+} from "~/redux/slices/userSlice";
 import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 import { db } from "~/firebase/firebase";
 import { toast } from "react-toastify";
@@ -12,15 +16,49 @@ const WomenBest = () => {
   const { user } = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const addToCart = async (item) => {
-    if (!user) {
-      alert("Ürünü sepete eklemek için giriş yapmalısınız.");
-      return;
+    try {
+      if (!user) {
+        toast.error("Ürünü sepete eklemek için giriş yapmalısınız.");
+        return;
+      }
+
+      const findItem = user.cart.find((sh) => sh.id === item.id);
+
+      const userRef = doc(db, "users", user.uid);
+
+      if (findItem) {
+        const updatedCart = user.cart.map((sh) =>
+          sh.id === item.id ? { ...sh, quantity: (sh.quantity || 1) + 1 } : sh
+        );
+
+        await updateDoc(userRef, {
+          cart: updatedCart,
+        });
+
+        dispatch(updateUserCart(updatedCart));
+        localStorage.setItem(
+          "user",
+          JSON.stringify({ ...user, cart: updatedCart })
+        );
+        toast.success("Ürün sepetteki adedi artırıldı.");
+      } else {
+        const newItem = { ...item, quantity: 1 };
+
+        await updateDoc(userRef, {
+          cart: arrayUnion(newItem),
+        });
+
+        dispatch(addCartToUser(newItem));
+        localStorage.setItem(
+          "user",
+          JSON.stringify({ ...user, cart: [...user.cart, newItem] })
+        );
+        toast.success("Ürün sepete eklendi.");
+      }
+    } catch (error) {
+      console.error("Hata detayı:", error);
+      toast.error("Bir hata oluştu: " + (error.message || error));
     }
-    const userRef = doc(db, "users", user.uid);
-    await updateDoc(userRef, {
-      cart: arrayUnion(item),
-    });
-    dispatch(addCartToUser(item));
   };
 
   const addToFavorites = async (item) => {
