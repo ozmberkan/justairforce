@@ -41,6 +41,7 @@ const Register = () => {
         emailVerified: user.emailVerified,
         admin: false,
         cart: [],
+        favorites: [],
       };
 
       dispatch(setUser(userData));

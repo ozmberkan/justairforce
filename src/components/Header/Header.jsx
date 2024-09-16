@@ -1,6 +1,6 @@
 import React from "react";
 import Logo from "../../assets/Svg/Logo.svg";
-import { FiLogOut, FiSearch, FiUser } from "react-icons/fi";
+import { FiLogOut, FiSearch, FiShoppingCart, FiUser } from "react-icons/fi";
 import { navTabs, rightTab } from "../../data/data";
 import { Link } from "react-router-dom";
 import TabMenu from "./Menu/TabMenu";
@@ -52,7 +52,7 @@ const Navbar = () => {
               to="/cart"
               className={`text-gray-700 hover:bg-gray-100 px-2 py-1 rounded-md text-base font-medium flex gap-x-2 items-center border`}
             >
-              <FiUser />
+              <FiShoppingCart />
               Sepetim
             </Link>
             <Link
@@ -74,7 +74,6 @@ const Navbar = () => {
               className="text-gray-700 hover:bg-gray-100 px-3 py-2 rounded-md text-base font-medium flex gap-x-2 items-center border"
             >
               <FiLogOut />
-              Çıkış Yap
             </button>
           </div>
         ) : (

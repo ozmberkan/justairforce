@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-
 const initialState = {
   user: JSON.parse(localStorage.getItem("user")) || null,
 };
@@ -21,10 +20,21 @@ export const userSlice = createSlice({
       state.user.cart = [...state.user.cart, action.payload];
       localStorage.setItem("user", JSON.stringify(state.user));
     },
+    updateUserCart: (state, action) => {
+      state.user.cart = action.payload;
+      localStorage.setItem("user", JSON.stringify(state.user));
+    },
+    addFavToUser: (state, action) => {
+      state.user.favorites = [...state.user.favorites, action.payload];
+      localStorage.setItem("user", JSON.stringify(state.user));
+    },
+    updateUserFav : (state,action) => {
+      state.user.favorites = action.payload;
+      localStorage.setItem("user", JSON.stringify(state.user));
+    }
   },
 });
 
-export const { setUser, logoutUser, addCartToUser } = userSlice.actions;
-
+export const { setUser, logoutUser, addCartToUser, updateUserCart,addFavToUser,updateUserFav } = userSlice.actions;
 
 export default userSlice.reducer;

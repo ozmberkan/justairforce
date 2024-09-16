@@ -23,6 +23,8 @@ import MyFavorites from "./pages/Profile/MyFavorites";
 import { useSelector } from "react-redux";
 import Footer from "./components/Footer/Footer";
 import Cart from "./pages/Profile/Cart";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   const { user } = useSelector((store) => store.user);
@@ -30,6 +32,7 @@ const App = () => {
     <Router>
       <div className="flex flex-col min-h-screen">
         <Header />
+        <ToastContainer position="top-left" autoClose={700} />
         <Routes>
           {/* Home Route */}
           <Route path="/" element={<Home />} />
