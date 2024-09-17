@@ -10,60 +10,36 @@ import {
 import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 import { db } from "~/firebase/firebase";
 import { toast } from "react-toastify";
+import { addToCartThunk } from "~/redux/slices/cartSlice";
 
 const MenBest = () => {
   const { user } = useSelector((store) => store.user);
   const dispatch = useDispatch();
 
   const addToCart = async (item) => {
-    try {
-      if (!user) {
-        toast.error("Ürünü sepete eklemek için giriş yapmalısınız.");
-        return;
-      }
-
-      const findItem = user.cart.find((sh) => sh.id === item.id);
-
-      const userRef = doc(db, "users", user.uid);
-
-      if (findItem) {
-        const updatedCart = user.cart.map((sh) =>
-          sh.id === item.id ? { ...sh, quantity: (sh.quantity || 1) + 1 } : sh
-        );
-
-        await updateDoc(userRef, {
-          cart: updatedCart,
-        });
-
-        dispatch(updateUserCart(updatedCart));
-        localStorage.setItem(
-          "user",
-          JSON.stringify({ ...user, cart: updatedCart })
-        );
-        toast.success("Ürün sepetteki adedi artırıldı.");
-      } else {
-        const newItem = { ...item, quantity: 1 };
-
-        await updateDoc(userRef, {
-          cart: arrayUnion(newItem),
-        });
-
-        dispatch(addCartToUser(newItem));
-        localStorage.setItem(
-          "user",
-          JSON.stringify({ ...user, cart: [...user.cart, newItem] })
-        );
-        toast.success("Ürün sepete eklendi.");
-      }
-    } catch (error) {
-      console.error("Hata detayı:", error);
-      toast.error("Bir hata oluştu: " + (error.message || error));
+    if (!user) {
+      toast.error("Ürünü sepete eklemek için giriş yapmalısınız.");
+      return;
     }
+
+    const updatedCart = user.cart.map((sh) =>
+      sh.id === item.id ? { ...sh, quantity: (sh.quantity || 1) + 1 } : sh
+    );
+
+    if (!updatedCart.some((sh) => sh.id === item.id)) {
+      const newItem = { ...item, quantity: 1 };
+      updatedCart.push(newItem);
+    }
+
+    dispatch(updateUserCart(updatedCart));
+    localStorage.setItem(
+      "user",
+      JSON.stringify({ ...user, cart: updatedCart })
+    );
+
+    dispatch(addToCartThunk({ item, user, updatedCart }));
   };
 
-
-
-  
   const addToFavorites = async (item) => {
     if (!user) {
       toast.error("Ürünü favorilere eklemek için giriş yapmalısınız.");
@@ -86,7 +62,7 @@ const MenBest = () => {
       toast.success("Başarıyla favorilere eklendi!");
     } catch (error) {
       toast.error(
-        "Bir hata ile karşılaştık. Geliştirici ile iletişim kurunuz!" + error
+        "Bir hata ile karşılaştık. Geliştirici ile iletişim kurunuz! " + error
       );
     }
   };
