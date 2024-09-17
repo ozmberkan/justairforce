@@ -7,9 +7,11 @@ import { auth, db } from "~/firebase/firebase";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { useDispatch } from "react-redux";
 import { setUser } from "~/redux/slices/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -37,12 +39,12 @@ const Login = () => {
         emailVerified: user.emailVerified,
         admin: userDoc.data()?.admin || false,
         cart: userDoc.data()?.cart || [],
+        favorites: userDoc.data().favorites || [],
       };
 
       dispatch(setUser(userData));
       console.log("giriş yapıldı");
-
-      reset();
+      navigate("/");
     } catch (error) {
       console.error("giriş hatası", error);
     }

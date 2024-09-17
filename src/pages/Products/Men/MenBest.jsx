@@ -60,6 +60,10 @@ const MenBest = () => {
       toast.error("Bir hata oluştu: " + (error.message || error));
     }
   };
+
+
+
+  
   const addToFavorites = async (item) => {
     if (!user) {
       toast.error("Ürünü favorilere eklemek için giriş yapmalısınız.");

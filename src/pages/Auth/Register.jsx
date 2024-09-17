@@ -8,9 +8,11 @@ import { auth, db } from "~/firebase/firebase";
 import { doc, setDoc } from "firebase/firestore";
 import { useDispatch } from "react-redux";
 import { setUser } from "~/redux/slices/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -49,7 +51,7 @@ const Register = () => {
       const userRef = doc(db, "users", user.uid);
       await setDoc(userRef, userData);
 
-      reset();
+      navigate("/");
     } catch (error) {
       console.error("Kayıt Hatası", error);
     }

@@ -39,7 +39,7 @@ const MyFavorites = () => {
         <h1 className="text-3xl font-semibold text-gray-700">Favorilerim</h1>
       </div>
       <div className="grid grid-cols-4 gap-5">
-        {user.favorites.length > 0 ? (
+        {user?.favorites.length > 0 ? (
           user?.favorites.map((sh) => (
             <div
               key={sh.id}
