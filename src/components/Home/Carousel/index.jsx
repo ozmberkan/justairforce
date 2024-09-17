@@ -4,14 +4,16 @@ import "slick-carousel/slick/slick-theme.css";
 import { favorites } from "~/data/data";
 
 const Carousel = () => {
-  var settings = {
+  const settings = {
     dots: false,
+    arrows: false,
     infinite: true,
-    speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
-    arrows: false,
     autoplay: true,
+    speed: 2000,
+    autoplaySpeed: 4000,
+    cssEase: "linear",
   };
 
   return (
@@ -20,11 +22,11 @@ const Carousel = () => {
         <Slider {...settings}>
           {favorites.map((item) => (
             <div key={item.id}>
-              <div className="w-full h-full gap-x-2 flex items-center justify-center">
-                <div className="border-2 border-gray-700 h-[400px] flex flex-col justify-start gap-y-5 w-[550px] rounded-xl p-4 shadow-xl">
+              <div className="w-full h-full gap-x-2 flex items-center justify-center ">
+                <div className="border-2 border-neutral-300 h-[400px] flex flex-col justify-start gap-y-5 w-[560px] rounded-xl p-4 ">
                   <div className="flex justify-between p-1">
                     <h1 className="font-semibold text-lg ">{item.name}</h1>
-                    <button className="bg-gray-700 px-5 rounded-md text-white hover:bg-gray-500 transition-colors duration-500">
+                    <button className="px-4 py-1.5 rounded-md text-white bg-neutral-900 transition-colors duration-500">
                       Detay
                     </button>
                   </div>

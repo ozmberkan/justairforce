@@ -8,8 +8,8 @@ export default {
       },
       backgroundImage: {
         banner: "url('/Banner.png')",
-        bannerHistory: "url('/bannerofhistory.jpg')",
-        appBanner: "url('/appBanner.svg')",
+        bannerHistory: "url('/bannerofhistory.png')",
+        appBanner: "url('/appBanner.png')",
       },
     },
   },

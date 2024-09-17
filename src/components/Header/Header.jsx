@@ -24,68 +24,77 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex justify-between items-center  border-b py-4 px-12 bg-white">
-      <div className="flex gap-x-5 items-center justify-start">
-        <Link to="/">
-          <img src={Logo} alt="Logo" />
+    <div className="flex justify-between items-center border-b py-4 px-8 bg-white shadow-sm">
+      {/* Sol Bölüm (Logo ve Navigasyon Menüsü) */}
+      <div className="flex items-center gap-x-8">
+        <Link to="/" className="flex items-center">
+          <img src={Logo} alt="Logo" className="w-24" />
         </Link>
-        {navTabs.map((tab) => (
+        <nav className="flex gap-x-6">
+          {navTabs.map((tab) => (
+            <Link
+              to={tab?.href}
+              key={tab.id}
+              className="text-gray-800 hover:text-blue-600 transition-colors duration-200 text-sm font-medium"
+            >
+              <TabMenu tab={tab} />
+            </Link>
+          ))}
           <Link
-            to={tab?.href}
-            key={tab.id}
-            className="text-gray-700 hover:bg-gray-100 px-3 py-2 rounded-md text-base font-medium"
+            to="/allproducts"
+            className="text-gray-800 hover:text-blue-600 transition-colors duration-200 text-sm font-medium"
           >
-            <TabMenu tab={tab} />
+            Tüm Air Force'lar
           </Link>
-        ))}
-        <Link
-          to="/allproducts"
-          className="text-gray-700 hover:bg-gray-100 px-3 py-2 rounded-md text-base font-medium"
-        >
-          Tüm Air Force'lar
-        </Link>
+        </nav>
       </div>
-      <div className="flex items-center justify-center px-7 gap-x-2 ">
+
+      {/* Sağ Bölüm (Kullanıcı İşlemleri ve Sepet) */}
+      <div className="flex items-center gap-x-6">
         {user ? (
-          <div className="flex gap-x-5 w-full ">
+          <div className="flex items-center gap-x-4">
             <Link
               to="/cart"
-              className={`text-gray-700 hover:bg-gray-100 px-2 py-1 rounded-md text-base font-medium flex gap-x-2 items-center border`}
+              className="flex items-center gap-x-2 text-gray-800 hover:text-blue-600 transition-colors duration-200 text-base font-medium"
             >
-              <FiShoppingCart />
+              <FiShoppingCart size={20} />
               Sepetim
             </Link>
             <Link
               to="/profile"
-              className={`text-gray-700 hover:bg-gray-100 px-2 py-1 rounded-md text-base font-medium flex gap-x-2 items-center border`}
+              className="flex items-center gap-x-2 text-gray-800 hover:text-blue-600 transition-colors duration-200 text-base font-medium"
             >
-              <FiUser />
+              <FiUser size={20} />
               Profilim
             </Link>
             <Link
               to="/myfavorites"
-              className="text-gray-700 hover:bg-gray-100 px-3 py-2 rounded-md text-base font-medium flex gap-x-2 items-center border"
+              className="flex items-center gap-x-2 text-gray-800 hover:text-blue-600 transition-colors duration-200 text-base font-medium"
             >
-              <FaHeart />
+              <FaHeart size={20} />
               Favorilerim
             </Link>
             <button
               onClick={logOut}
-              className="text-gray-700 hover:bg-gray-100 px-3 py-2 rounded-md text-base font-medium flex gap-x-2 items-center border"
+              className="flex items-center gap-x-2 text-gray-800 hover:text-red-600 transition-colors duration-200 text-base font-medium"
             >
-              <FiLogOut />
+              <FiLogOut size={20} />
+              Çıkış Yap
             </button>
           </div>
         ) : (
-          rightTab.map((tab) => (
-            <Link
-              to={tab?.href}
-              key={tab.id}
-              className={`text-gray-700 hover:bg-gray-100 px-3 py-2 rounded-md text-base font-medium flex gap-x-2 items-center border`}
-            >
-              <tab.icon size={20} /> {tab.label}
-            </Link>
-          ))
+          <div className="flex items-center gap-x-4">
+            {rightTab.map((tab) => (
+              <Link
+                to={tab?.href}
+                key={tab.id}
+                className="flex items-center gap-x-1 border-transparent text-black px-4 py-2 rounded-md text-sm font-medium"
+              >
+                <tab.icon size={16} />
+                {tab.label}
+              </Link>
+            ))}
+          </div>
         )}
       </div>
     </div>

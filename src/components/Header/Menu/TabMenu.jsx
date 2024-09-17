@@ -23,13 +23,13 @@ const MenuComponent = ({ tab }) => {
       >
         <MenuItems
           anchor="bottom"
-          className="bg-white rounded-xl border p-3 flex flex-col gap-y-3 [--anchor-gap:4px] sm:[--anchor-gap:12px]"
+          className="bg-white rounded-xl border p-3 flex flex-col gap-y-3 [--anchor-gap:2px] sm:[--anchor-gap:12px]"
         >
           {tab.options?.map((tab) => (
             <MenuItem key={tab.label}>
               <Link
                 to={tab.href}
-                className="block data-[focus]:bg-zinc-100 p-2 rounded-lg"
+                className="block data-[focus]:bg-zinc-100 p-3 text-sm rounded-md"
               >
                 {tab.label}
               </Link>
