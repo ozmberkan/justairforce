@@ -88,7 +88,7 @@ const Navbar = () => {
               <Link
                 to={tab?.href}
                 key={tab.id}
-                className="flex items-center gap-x-1 border-transparent text-black px-4 py-2 rounded-md text-sm font-medium"
+                className="flex items-center border gap-x-1  rounded-full text-white bg-neutral-800 hover:bg-neutral-950 transition-colors duration-300 px-4 py-2  text-sm font-medium"
               >
                 <tab.icon size={16} />
                 {tab.label}
