@@ -19,13 +19,8 @@ export const cartSlice = createSlice({
 
 export const addToCartThunk = createAsyncThunk(
   "cart/addToCart",
-  async ({ user, item, updatedCart }, { rejectWithValue }) => {
+  async ({ user, updatedCart }) => {
     try {
-      if (!user) {
-        toast.error("Ürünü sepete eklemek için giriş yapmalısınız.");
-        return;
-      }
-
       const userRef = doc(db, "users", user.uid);
 
       await updateDoc(userRef, {
@@ -35,11 +30,26 @@ export const addToCartThunk = createAsyncThunk(
       toast.success("Ürün sepete eklendi veya adedi artırıldı.");
     } catch (error) {
       console.error("Hata detayı:", error);
-      toast.error("Bir hata oluştu: " + (error.message || error));
-      return rejectWithValue(error.message || error);
     }
   }
 );
+
+
+export const addToFavThunk = createAsyncThunk(
+  "user/addToFav", 
+  async({item,user}) => {
+    try {
+      const userRef = doc(db, "users", user.uid);
+      await updateDoc(userRef,{
+        favorites: arrayUnion(item)
+      }
+      )
+    } catch (error) {
+      console.log(error);
+    }
+})
+
+
 
 export const { setCart } = cartSlice.actions;
 

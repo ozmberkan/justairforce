@@ -4,10 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { db } from "~/firebase/firebase";
 import { updateUserFav } from "~/redux/slices/userSlice";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 const MyFavorites = () => {
   const { user } = useSelector((store) => store.user);
   const dispatch = useDispatch();
+  const [animationParent] = useAutoAnimate();
 
   const deleteFav = async (id) => {
     try {
@@ -38,7 +40,7 @@ const MyFavorites = () => {
       <div className="flex justify-between items-center w-full">
         <h1 className="text-3xl font-semibold text-gray-700">Favorilerim</h1>
       </div>
-      <div className="grid grid-cols-4 gap-5">
+      <div className="grid grid-cols-4 gap-5" ref={animationParent}>
         {user?.favorites.length > 0 ? (
           user?.favorites.map((sh) => (
             <div

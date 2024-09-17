@@ -2,22 +2,31 @@ import { dailyMen } from "~/data/data";
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addCartToUser,
-  addFavToUser,
-  updateUserCart,
-} from "~/redux/slices/userSlice";
-import { arrayUnion, doc, updateDoc } from "firebase/firestore";
-import { db } from "~/firebase/firebase";
+import { addFavToUser, updateUserCart } from "~/redux/slices/userSlice";
 import { toast } from "react-toastify";
-import { addToCartThunk } from "~/redux/slices/cartSlice";
+import { addToCartThunk, addToFavThunk } from "~/redux/slices/cartSlice";
 
 const MenDaily = () => {
   const { user } = useSelector((store) => store.user);
   const dispatch = useDispatch();
 
   const addToCart = async (item) => {
-    dispatch(addToCartThunk(item, user, dispatch));
+    if (!user) {
+      toast.error("Ürünü sepete eklemek için giriş yapmalısınız.");
+      return;
+    }
+
+    const updatedCart = user.cart.map((sh) =>
+      sh.id === item.id ? { ...sh, quantity: (sh.quantity || 1) + 1 } : sh
+    );
+    if (!updatedCart.some((sh) => sh.id === item.id)) {
+      const newItem = { ...item, quantity: 1 };
+      updatedCart.push(newItem);
+    }
+
+    dispatch(updateUserCart(updatedCart)); //localstorage
+
+    dispatch(addToCartThunk({ item, user, updatedCart })); //firebase
   };
 
   const addToFavorites = async (item) => {
@@ -25,26 +34,16 @@ const MenDaily = () => {
       toast.error("Ürünü favorilere eklemek için giriş yapmalısınız.");
       return;
     }
-    const findItem = user.favorites.find((fItem) => fItem.id === item.id);
+    const findItem = user?.favorites.find((fItem) => fItem.id === item.id);
 
     if (findItem) {
       toast.error("Bu ürün favorilerde zaten bulunuyor!");
       return;
     }
 
-    try {
-      const userRef = doc(db, "users", user.uid);
-
-      await updateDoc(userRef, {
-        favorites: arrayUnion(item),
-      });
-      dispatch(addFavToUser(item));
-      toast.success("Başarıyla favorilere eklendi!");
-    } catch (error) {
-      toast.error(
-        "Bir hata ile karşılaştık. Geliştirici ile iletişim kurunuz!" + error
-      );
-    }
+    dispatch(addFavToUser(item));
+    dispatch(addToFavThunk({ item, user }));
+    toast.success("Başarıyla favorilere eklendi!");
   };
 
   return (

@@ -35,7 +35,10 @@ const Cart = () => {
       <div className="flex justify-between items-center w-full">
         <h1 className="text-3xl font-semibold text-gray-700">Sepetim</h1>
         <span className="px-4 py-2 rounded-md border bg-zinc-100 outline-none">
-          {`Toplam: ${user.cart.reduce((acc, item) => acc + item.price, 0)}₺`}
+          {`Toplam: ${user.cart.reduce(
+            (acc, item) => acc + item.price * item.quantity,
+            0
+          )}₺`}
         </span>
       </div>
       <div className="grid grid-cols-4 gap-5">

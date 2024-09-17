@@ -10,7 +10,7 @@ import {
 import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 import { db } from "~/firebase/firebase";
 import { toast } from "react-toastify";
-import { addToCartThunk } from "~/redux/slices/cartSlice";
+import { addToCartThunk, addToFavThunk } from "~/redux/slices/cartSlice";
 
 const MenBest = () => {
   const { user } = useSelector((store) => store.user);
@@ -25,19 +25,14 @@ const MenBest = () => {
     const updatedCart = user.cart.map((sh) =>
       sh.id === item.id ? { ...sh, quantity: (sh.quantity || 1) + 1 } : sh
     );
-
     if (!updatedCart.some((sh) => sh.id === item.id)) {
       const newItem = { ...item, quantity: 1 };
       updatedCart.push(newItem);
     }
 
-    dispatch(updateUserCart(updatedCart));
-    localStorage.setItem(
-      "user",
-      JSON.stringify({ ...user, cart: updatedCart })
-    );
+    dispatch(updateUserCart(updatedCart)); //localstorage
 
-    dispatch(addToCartThunk({ item, user, updatedCart }));
+    dispatch(addToCartThunk({ item, user, updatedCart })); //firebase
   };
 
   const addToFavorites = async (item) => {
@@ -45,26 +40,16 @@ const MenBest = () => {
       toast.error("Ürünü favorilere eklemek için giriş yapmalısınız.");
       return;
     }
-    const findItem = user.favorites.find((fItem) => fItem.id === item.id);
+    const findItem = user?.favorites.find((fItem) => fItem.id === item.id);
 
     if (findItem) {
       toast.error("Bu ürün favorilerde zaten bulunuyor!");
       return;
     }
 
-    try {
-      const userRef = doc(db, "users", user.uid);
-
-      await updateDoc(userRef, {
-        favorites: arrayUnion(item),
-      });
-      dispatch(addFavToUser(item));
-      toast.success("Başarıyla favorilere eklendi!");
-    } catch (error) {
-      toast.error(
-        "Bir hata ile karşılaştık. Geliştirici ile iletişim kurunuz! " + error
-      );
-    }
+    dispatch(addFavToUser(item));
+    dispatch(addToFavThunk({ item, user }));
+    toast.success("Başarıyla favorilere eklendi!");
   };
 
   return (

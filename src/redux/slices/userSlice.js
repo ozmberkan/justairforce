@@ -16,21 +16,16 @@ export const userSlice = createSlice({
       state.user = null;
       localStorage.removeItem("user");
     },
-    addCartToUser: (state, action) => {
-      state.user.cart = [...state.user.cart, action.payload];
-      localStorage.setItem("user", JSON.stringify(state.user));
-    },
     updateUserCart: (state, action) => {
       state.user.cart = action.payload;
-      localStorage.setItem("user", JSON.stringify(state.user));
+      localStorage.setItem("user", JSON.stringify({ ...state.user, cart: action.payload }));
     },
     addFavToUser: (state, action) => {
       state.user.favorites = [...state.user.favorites, action.payload];
-      localStorage.setItem("user", JSON.stringify(state.user));
+      localStorage.setItem("user", JSON.stringify({ ...state.user, favorites: action.payload }))
     },
     updateUserFav : (state,action) => {
       state.user.favorites = action.payload;
-      localStorage.setItem("user", JSON.stringify(state.user));
     }
   },
 });
