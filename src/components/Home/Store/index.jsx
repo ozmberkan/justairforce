@@ -11,7 +11,7 @@ const Store = () => {
         <div className="w-full h-full  flex flex-col items-end justify-center gap-y-5 p-12 text-white sm:text-right text-center">
           <h1 className="text-3xl font-bold">AirForce'ı indir!</h1>
           <p className="text-center font-semibold">
-            Yüzlerce airforce arasından en sevdiğini daha kolay bir şekilde
+            Yüzlerce Air Force arasından en sevdiğini daha kolay bir şekilde
             seçebilmen için tasarlandı.
           </p>
           <img
