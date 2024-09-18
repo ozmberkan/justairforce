@@ -121,15 +121,15 @@ export const loginForm = [
 
 export const userTabs = [
   {id:1,to:"/cart",icon: FiShoppingCart,label: "Sepetim"},
-  {id:1,to:"/profile",icon: FiUser,label: "Profilim"},
-  {id:1,to:"/my-favorites",icon: FiHeart,label: "Favorilerim"},
+  {id:2,to:"/profile",icon: FiUser,label: "Profilim"},
+  {id:3,to:"/my-favorites",icon: FiHeart,label: "Favorilerim"},
 
 ]
 
 export const footerTabs = [
   {id:1,to:"/",label:"Anasayfa"},
-  {id:1,to:"/all-products",label:"Tüm Ürünler"},
-  {id:1,to:"/men-best-sellers",label:" Erkek Çok Satanlar"},
-  {id:1,to:"/women-best-sellers",label:"Kadın Çok Satanlar"},
+  {id:2,to:"/all-products",label:"Tüm Ürünler"},
+  {id:3,to:"/men-best-sellers",label:" Erkek Çok Satanlar"},
+  {id:4,to:"/women-best-sellers",label:"Kadın Çok Satanlar"},
 
 ]

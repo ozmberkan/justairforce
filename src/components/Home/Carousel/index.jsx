@@ -3,14 +3,17 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { favorites } from "~/data/data";
 import { Link } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 
 const Carousel = () => {
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
+
   const settings = {
     dots: false,
     arrows: false,
     infinite: true,
-    slidesToShow: 3,
-    slidesToScroll: 1,
+    slidesToShow: isTabletOrMobile ? 1 : 3,
+    slidesToScroll: isTabletOrMobile ? 1 : 3,
     autoplay: true,
     speed: 2000,
     autoplaySpeed: 4000,

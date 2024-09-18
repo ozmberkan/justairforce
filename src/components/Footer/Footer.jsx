@@ -5,10 +5,10 @@ import { footerTabs } from "~/data/data";
 
 const Footer = () => {
   return (
-    <footer className="bg-white border-t text-black py-6 mt-auto">
+    <footer className="sm:bg-white   border-t text-black py-6 mt-auto">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0">
+        <div className="flex flex-col w-full  sm:flex-row sm:justify-between justify-start items-center  ">
+          <div className="mb-4 md:mb-0 sm:w-auto w-full flex justify-center items-center">
             <h1 className="text-2xl font-bold">
               <img src={Logo} alt="" />
             </h1>
@@ -17,7 +17,7 @@ const Footer = () => {
             </p>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-8">
+          <div className="flex flex-col md:flex-row gap-4 sm:w-auto w-full sm:divide-none justify-center items-center">
             {footerTabs.map((tab) => (
               <Link
                 key={tab.id}
