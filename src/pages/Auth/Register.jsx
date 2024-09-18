@@ -58,7 +58,7 @@ const Register = () => {
     }
   };
   return (
-    <div className="flex w-full px-24 flex-grow justify-start items-center bg-bannerHistory bg-center bg-cover gap-x-12">
+    <div className="flex w-full sm:p-24 p-5 sm:flex-row flex-col flex-grow justify-start items-center bg-bannerHistory bg-center bg-cover gap-x-12">
       <form
         onSubmit={handleSubmit(registerHandle)}
         className="w-full max-w-md  bg-white p-6 rounded-lg shadow-lg border flex flex-col gap-y-3"
@@ -100,7 +100,7 @@ const Register = () => {
         </div>
       </form>
 
-      <div className="w-full  relative flex items-center justify-center text-center">
+      <div className="w-full  relative sm:flex hidden items-center justify-center text-center">
         <img
           src={Logo}
           alt=""

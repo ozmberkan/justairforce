@@ -3,7 +3,7 @@ import airforcerainbow from "~/assets/Products/14.jpeg";
 
 const AirForceRainbow = () => {
   return (
-    <div className="flex justify-start items-center w-full bg-white p-12 gap-x-5 flex-grow">
+    <div className="flex sm:flex-row flex-col  justify-start items-center w-full bg-white p-12 sm:gap-x-5 gap-y-5 flex-grow">
       <img
         src={airforcerainbow}
         alt="airforcerainbow"
@@ -19,7 +19,7 @@ const AirForceRainbow = () => {
           laboriosam ea dolorem doloremque fugiat architecto numquam repellendus
           totam, voluptatibus perspiciatis sint magnam quidem ex.
         </h1>
-        <button className="w-1/4 bg-green-100 text-green-500 border-green-500 border  rounded-md px-4 py-2">
+        <button className="sm:w-1/4 bg-green-100 text-green-500 border-green-500 border  rounded-md px-4 py-2">
           Sepete Ekle
         </button>
       </div>

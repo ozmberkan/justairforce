@@ -53,7 +53,7 @@ const WomenBest = () => {
       <h1 className="text-3xl font-semibold text-gray-700">
         Kadın En Çok Satanlar
       </h1>
-      <div className="grid grid-cols-4 gap-5">
+      <div className="grid sm:grid-cols-4 grid-cols-1 gap-5">
         {bestsellersWomen.map((sh) => (
           <div
             key={sh.id}

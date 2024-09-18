@@ -11,6 +11,9 @@ export default {
         bannerHistory: "url('/bannerofhistory.png')",
         appBanner: "url('/appBanner.png')",
       },
+      dropShadow: {
+        '3xl': '0 0px 35px rgba(90,02,206, 0.5)',
+      }
     },
   },
   plugins: [],

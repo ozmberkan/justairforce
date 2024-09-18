@@ -32,7 +32,10 @@ const MyFavorites = () => {
       <div className="flex justify-between items-center w-full">
         <h1 className="text-3xl font-semibold text-gray-700">Favorilerim</h1>
       </div>
-      <div className="grid grid-cols-4 gap-5" ref={animationParent}>
+      <div
+        className="grid sm:grid-cols-4 grid-cols-1 gap-5"
+        ref={animationParent}
+      >
         {user?.favorites.length > 0 ? (
           user?.favorites.map((sh) => (
             <div

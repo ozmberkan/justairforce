@@ -42,7 +42,10 @@ const Cart = () => {
           )}₺`}
         </span>
       </div>
-      <div className="grid grid-cols-4 gap-5" ref={animationParent}>
+      <div
+        className="grid sm:grid-cols-4 grid-cols-1 gap-5"
+        ref={animationParent}
+      >
         {user.cart.length > 0 ? (
           user?.cart.map((sh) => (
             <div

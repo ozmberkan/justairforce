@@ -13,8 +13,8 @@ const ProductDetail = () => {
 
   return (
     <div className="w-full p-4">
-      <div className="p-6 rounded-md border flex justify-center items-start gap-x-12 ">
-        <div className="flex flex-col items-start justify-start gap-y-5 bg-[#F6F6F6] rounded-md border h-[500px] w-2/3 p-12">
+      <div className="p-6 rounded-md border flex sm:flex-row flex-col-reverse justify-center items-start sm:gap-x-12 gap-y-6 ">
+        <div className="flex flex-col  items-start justify-start gap-y-5 bg-[#F6F6F6] rounded-md border sm:h-[500px] sm:w-2/3 sm:p-12 p-4">
           <div className="flex justify-between items-center w-full">
             <p className="text-5xl font-semibold">{findProduct.name}</p>
             <p className="text-3xl font-semibold text-green-500 bg-green-100 px-4 rounded-xl py-2">
@@ -35,7 +35,7 @@ const ProductDetail = () => {
           <img
             src={findProduct.image}
             alt={findProduct.name}
-            className="w-[700px] h-[500px] object-cover rounded-xl border"
+            className="sm:w-[700px] sm:h-[500px] object-cover rounded-xl border"
           />
           <p className="absolute top-3 right-3 px-4 py-2 bg-orange-100 text-orange-500 rounded-xl">
             Ürün Kodu: {findProduct.id}

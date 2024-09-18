@@ -29,7 +29,7 @@ const Hero = () => {
           <img
             src={Shoe2}
             alt="Shoe"
-            className="sm:w-[600px] w-[300px] drop-shadow-2xl sm:opacity-100 opacity-50"
+            className="sm:w-[600px] w-[300px] drop-shadow-3xl sm:opacity-100 opacity-50"
           />
         </div>
       </div>
