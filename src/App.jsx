@@ -25,6 +25,7 @@ import Footer from "./components/Footer/Footer";
 import Cart from "./pages/Profile/Cart";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ForgotPassword from "./pages/Auth/ForgotPassword";
 
 const App = () => {
   const { user } = useSelector((store) => store.user);
@@ -67,6 +68,8 @@ const App = () => {
             path="/cart"
             element={user ? <Cart /> : <Navigate to="/login" />}
           />
+
+          <Route path="/forgot-password" element={<ForgotPassword />} />
         </Routes>
         <Footer />
       </div>
