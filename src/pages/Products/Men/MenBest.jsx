@@ -2,13 +2,7 @@ import { bestsellersMen, favorites } from "~/data/data";
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addCartToUser,
-  addFavToUser,
-  updateUserCart,
-} from "~/redux/slices/userSlice";
-import { arrayUnion, doc, updateDoc } from "firebase/firestore";
-import { db } from "~/firebase/firebase";
+import { addFavToUser, updateUserCart } from "~/redux/slices/userSlice";
 import { toast } from "react-toastify";
 import { addToCartThunk, addToFavThunk } from "~/redux/slices/cartSlice";
 

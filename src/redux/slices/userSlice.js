@@ -1,4 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { doc, updateDoc } from 'firebase/firestore';
+import { db } from '~/firebase/firebase';
 
 const initialState = {
   user: JSON.parse(localStorage.getItem("user")) || null,
@@ -29,6 +31,24 @@ export const userSlice = createSlice({
     }
   },
 });
+
+
+export const deleteFavorites = createAsyncThunk("user/deleteFavorites", async({user, newFavorites}) => {
+  try {
+
+    const userRef = doc(db, "users", user.uid);
+    await updateDoc(userRef, { favorites: newFavorites });
+
+  } catch (error) {
+    console.log(error);
+  }
+})
+
+
+
+
+
+
 
 export const { setUser, logoutUser, addCartToUser, updateUserCart,addFavToUser,updateUserFav } = userSlice.actions;
 

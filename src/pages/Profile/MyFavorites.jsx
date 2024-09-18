@@ -3,7 +3,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { db } from "~/firebase/firebase";
-import { updateUserFav } from "~/redux/slices/userSlice";
+import { deleteFavorites, updateUserFav } from "~/redux/slices/userSlice";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 const MyFavorites = () => {
@@ -16,19 +16,11 @@ const MyFavorites = () => {
       if (!user || !user.favorites) {
         toast.error("Kullanıcı veya sepet bilgileri bulunamadı.");
       }
-
       const newFavorites = user.favorites.filter((sh) => sh && sh.id !== id);
 
-      const userRef = doc(db, "users", user.uid);
-
-      await updateDoc(userRef, { favorites: newFavorites });
-
+      dispatch(deleteFavorites({ user, newFavorites }));
       dispatch(updateUserFav(newFavorites));
 
-      localStorage.setItem(
-        "user",
-        JSON.stringify({ ...user, favorites: newFavorites })
-      );
       toast.success("Ürün favorilerden silindi.");
     } catch (error) {
       toast.error("Bir hata oluştu: " + (error.message || error));
