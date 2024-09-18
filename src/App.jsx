@@ -48,11 +48,11 @@ const App = () => {
           <Route path="/airforcerainbow" element={<Airforcerainbow />} />
 
           {/* Product Listing Routes */}
-          <Route path="/allproducts" element={<AllProducts />} />
-          <Route path="/menbestsellers" element={<MenBest />} />
-          <Route path="/mendaily" element={<MenDaily />} />
-          <Route path="/womenbestsellers" element={<WomenBest />} />
-          <Route path="/womendaily" element={<WomenDaily />} />
+          <Route path="/all-products" element={<AllProducts />} />
+          <Route path="/men-best-sellers" element={<MenBest />} />
+          <Route path="/men-daily" element={<MenDaily />} />
+          <Route path="/women-best-sellers" element={<WomenBest />} />
+          <Route path="/women-daily" element={<WomenDaily />} />
 
           {/* Profile Route */}
           <Route
@@ -60,7 +60,7 @@ const App = () => {
             element={user ? <Profile /> : <Navigate to="/login" />}
           />
           <Route
-            path="/myfavorites"
+            path="/my-favorites"
             element={user ? <MyFavorites /> : <Navigate to="/login" />}
           />
           <Route

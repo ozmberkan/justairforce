@@ -1,11 +1,11 @@
 import React from "react";
 import Logo from "../../assets/Svg/Logo.svg";
 import { FiLogOut, FiSearch, FiShoppingCart, FiUser } from "react-icons/fi";
-import { navTabs, rightTab } from "../../data/data";
-import { Link } from "react-router-dom";
+import { navTabs, rightTab, userTabs } from "../../data/data";
+import { Link, useNavigate } from "react-router-dom";
 import TabMenu from "./Menu/TabMenu";
 import { useDispatch, useSelector } from "react-redux";
-import { FaHeart, FaSignOutAlt } from "react-icons/fa";
+import { FaHeart, FaSignOutAlt, FaSortDown } from "react-icons/fa";
 import { logoutUser } from "~/redux/slices/userSlice";
 import { signOut } from "firebase/auth";
 import { auth } from "~/firebase/firebase";
@@ -13,11 +13,13 @@ import { auth } from "~/firebase/firebase";
 const Navbar = () => {
   const { user } = useSelector((store) => store.user);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const logOut = async () => {
     try {
       await signOut(auth);
       dispatch(logoutUser());
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
@@ -35,14 +37,14 @@ const Navbar = () => {
             <Link
               to={tab?.href}
               key={tab.id}
-              className="text-gray-800 hover:text-blue-600 transition-colors duration-200 text-sm font-medium"
+              className="text-gray-800 hover:text-[#763ebe] transition-colors duration-200 text-sm font-medium flex gap-x-1"
             >
-              <TabMenu tab={tab} />
+              <TabMenu tab={tab} /> <FaSortDown />
             </Link>
           ))}
           <Link
-            to="/allproducts"
-            className="text-gray-800 hover:text-blue-600 transition-colors duration-200 text-sm font-medium"
+            to="/all-products"
+            className="text-gray-800 hover:text-[#763ebe] transition-colors duration-200 text-sm font-medium"
           >
             Tüm Air Force'lar
           </Link>
@@ -53,32 +55,22 @@ const Navbar = () => {
       <div className="flex items-center gap-x-6">
         {user ? (
           <div className="flex items-center gap-x-4">
-            <Link
-              to="/cart"
-              className="flex items-center gap-x-2 text-gray-800 hover:text-blue-600 transition-colors duration-200 text-base font-medium"
-            >
-              <FiShoppingCart size={20} />
-              Sepetim
-            </Link>
-            <Link
-              to="/profile"
-              className="flex items-center gap-x-2 text-gray-800 hover:text-blue-600 transition-colors duration-200 text-base font-medium"
-            >
-              <FiUser size={20} />
-              Profilim
-            </Link>
-            <Link
-              to="/myfavorites"
-              className="flex items-center gap-x-2 text-gray-800 hover:text-blue-600 transition-colors duration-200 text-base font-medium"
-            >
-              <FaHeart size={20} />
-              Favorilerim
-            </Link>
+            {userTabs.map((tab) => (
+              <Link
+                key={tab.id}
+                to={tab.to}
+                className="flex items-center gap-x-2 text-gray-800 hover:text-[#763ebe] transition-colors duration-200 text-sm font-semibold"
+              >
+                <tab.icon />
+                {tab.label}
+              </Link>
+            ))}
+
             <button
               onClick={logOut}
-              className="flex items-center gap-x-2 text-gray-800 hover:text-red-600 transition-colors duration-200 text-base font-medium"
+              className="flex items-center gap-x-2  transition-colors duration-200 text-sm font-medium border rounded-full px-2 py-1 bg-red-500 text-white hover:bg-red-600 "
             >
-              <FiLogOut size={20} />
+              <FiLogOut />
               Çıkış Yap
             </button>
           </div>
@@ -88,7 +80,7 @@ const Navbar = () => {
               <Link
                 to={tab?.href}
                 key={tab.id}
-                className="flex items-center border gap-x-1  rounded-full text-white bg-neutral-800 hover:bg-neutral-950 transition-colors duration-300 px-4 py-2  text-sm font-medium"
+                className="px-4 py-1.5 rounded-md font-medium text-white bg-gradient-to-r from-black to-[#5B348F] transition-colors duration-500 flex gap-x-1 items-center text-sm"
               >
                 <tab.icon size={16} />
                 {tab.label}

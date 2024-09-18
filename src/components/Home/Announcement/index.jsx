@@ -3,7 +3,10 @@ import Shape1 from "~/assets/Svg/Shape1.svg";
 const Announcement = () => {
   return (
     <div className="w-full h-[700px] p-24 flex justify-center items-center">
-      <div className="bg-bannerHistory w-2/3 h-full bg-cover bg-center bg-no-repeat rounded-xl flex justify-center items-center shadow-xl">
+      <div
+        className="bg-bannerHistory w-2/3 h-full bg-cover bg-center bg-no-repeat rounded-xl flex justify-center items-center 
+      shadow-[0_20px_250px_rgba(91,_52,_143,_1)]"
+      >
         <div className="w-full relative h-full flex flex-col gap-y-5 justify-center items-start px-12 text-white ring-2 ring-offset-2 rounded-xl ring-black">
           <h1 className="text-4xl font-bold">Bir efsanenin doğuşu!</h1>
           <p className="text-xl">
@@ -22,3 +25,4 @@ const Announcement = () => {
 };
 
 export default Announcement;
+91, 52, 143;

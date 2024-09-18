@@ -3,11 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { db } from "~/firebase/firebase";
 import { updateUserCart } from "~/redux/slices/userSlice";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 const Cart = () => {
   const { user } = useSelector((store) => store.user);
   const dispatch = useDispatch();
-
+  const [animationParent] = useAutoAnimate();
   const deleteProduct = async (id) => {
     try {
       if (!user || !user.cart) {
@@ -41,7 +42,7 @@ const Cart = () => {
           )}₺`}
         </span>
       </div>
-      <div className="grid grid-cols-4 gap-5">
+      <div className="grid grid-cols-4 gap-5" ref={animationParent}>
         {user.cart.length > 0 ? (
           user?.cart.map((sh) => (
             <div

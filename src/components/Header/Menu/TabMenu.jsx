@@ -12,7 +12,6 @@ const MenuComponent = ({ tab }) => {
   return (
     <Menu>
       <MenuButton>{tab.title}</MenuButton>
-
       <Transition
         enter="transition ease-out duration-200"
         enterFrom="transform opacity-0 scale-95"

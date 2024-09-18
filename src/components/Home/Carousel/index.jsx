@@ -2,6 +2,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { favorites } from "~/data/data";
+import { Link } from "react-router-dom";
 
 const Carousel = () => {
   const settings = {
@@ -17,18 +18,24 @@ const Carousel = () => {
   };
 
   return (
-    <div className="w-full flex justify-center items-center p-12">
+    <div className="w-full flex flex-col justify-center items-start gap-y-6 p-12">
+      <h1 className="text-4xl font-semibold px-6 py-1 bg-clip-text text-transparent bg-gradient-to-r from-black to-[rgb(91,52,143)] ">
+        En Çok Satılan Ürünler
+      </h1>
       <div className="w-full">
         <Slider {...settings}>
           {favorites.map((item) => (
             <div key={item.id}>
               <div className="w-full h-full gap-x-2 flex items-center justify-center ">
-                <div className="border-2 border-neutral-300 h-[400px] flex flex-col justify-start gap-y-5 w-[560px] rounded-xl p-4 ">
+                <div className="border-4 border-neutral-900 cursor-grab  h-[400px] flex flex-col justify-start gap-y-5 w-[560px] rounded-xl p-4 ">
                   <div className="flex justify-between p-1">
-                    <h1 className="font-semibold text-lg ">{item.name}</h1>
-                    <button className="px-4 py-1.5 rounded-md text-white bg-neutral-900 transition-colors duration-500">
-                      Detay
-                    </button>
+                    <h1 className="font-semibold text-xl">{item.name}</h1>
+                    <Link
+                      to={`/products/${item.id}`}
+                      className="px-4 py-1.5 rounded-md text-white bg-gradient-to-r from-black to-[#5B348F] transition-colors duration-500"
+                    >
+                      Ürün Detayı
+                    </Link>
                   </div>
                   <img
                     src={item.image}

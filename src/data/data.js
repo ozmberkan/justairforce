@@ -1,4 +1,4 @@
-import { FiShoppingCart, FiUser } from "react-icons/fi";
+import { FiHeart, FiShoppingCart, FiUser } from "react-icons/fi";
 import { AiOutlineUserAdd } from "react-icons/ai";
 
 import Shoe1 from "../assets/Products/1.jpeg";
@@ -32,8 +32,8 @@ export const navTabs = [
     id: 2,
     title: "Erkek",
     options: [
-      { label: "En Çok Satanlar", href: "/menbestsellers" },
-      { label: "Günlük Giyim", href: "/mendaily" },
+      { label: "En Çok Satanlar", href: "/men-best-sellers" },
+      { label: "Günlük Giyim", href: "/men-daily" },
     ],
     href: "#",
   },
@@ -41,8 +41,8 @@ export const navTabs = [
     id: 3,
     title: "Kadın",
     options: [
-      { label: "En Çok Satanlar", href: "/womenbestsellers" },
-      { label: "Günlük Giyim", href: "/womendaily" },
+      { label: "En Çok Satanlar", href: "/women-best-sellers" },
+      { label: "Günlük Giyim", href: "/women-daily" },
     ],
     href: "#",
   },
@@ -117,3 +117,19 @@ export const loginForm = [
   {id: 1,type: "text",name: "email",placeholder: "E-Posta",},
   {id: 2,type: "password",name: "password",placeholder: "Parola",},
 ];
+
+
+export const userTabs = [
+  {id:1,to:"/cart",icon: FiShoppingCart,label: "Sepetim"},
+  {id:1,to:"/profile",icon: FiUser,label: "Profilim"},
+  {id:1,to:"/my-favorites",icon: FiHeart,label: "Favorilerim"},
+
+]
+
+export const footerTabs = [
+  {id:1,to:"/",label:"Anasayfa"},
+  {id:1,to:"/all-products",label:"Tüm Ürünler"},
+  {id:1,to:"/men-best-sellers",label:" Erkek Çok Satanlar"},
+  {id:1,to:"/women-best-sellers",label:"Kadın Çok Satanlar"},
+
+]

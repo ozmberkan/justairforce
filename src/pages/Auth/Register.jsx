@@ -9,6 +9,7 @@ import { doc, setDoc } from "firebase/firestore";
 import { useDispatch } from "react-redux";
 import { setUser } from "~/redux/slices/userSlice";
 import { useNavigate } from "react-router-dom";
+import Logo from "~/assets/Svg/Logo.svg";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -57,11 +58,12 @@ const Register = () => {
     }
   };
   return (
-    <div className="flex flex-grow justify-center items-center">
+    <div className="flex w-full px-24 flex-grow justify-start items-center bg-bannerHistory bg-center bg-cover gap-x-12">
       <form
         onSubmit={handleSubmit(registerHandle)}
-        className="space-y-6 w-full max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg border"
+        className="w-full max-w-md  bg-white p-6 rounded-lg shadow-lg border flex flex-col gap-y-3"
       >
+        <h1 className="text-2xl font-semibold mb-5 ">Kayıt Ol</h1>
         {registerForm.map((input) => (
           <div key={input.name} className="space-y-2 flex flex-col">
             <label
@@ -75,23 +77,41 @@ const Register = () => {
               type={input.type}
               {...register(input.name)}
               placeholder={input.placeholder}
-              className="px-4 py-2 rounded-md border focus:outline-none focus:border-black focus:ring-1 focus:ring-black"
+              className="px-4 py-2 rounded-md border outline-none  focus:ring-1 ring-offset-2 focus:ring-[#763ebe] transition-all duration-300"
             />
-            {errors[input.name] && (
-              <p className="text-sm text-red-500">
-                {errors[input.name].message}
-              </p>
-            )}
           </div>
         ))}
 
         <button
           type="submit"
-          className="w-full bg-black text-white p-3 rounded-md  transition duration-200"
+          className="px-4 py-1.5 rounded-md text-white bg-gradient-to-r from-black to-[#5B348F] transition-colors duration-500"
         >
           Kayıt Ol
         </button>
+
+        {/* Şifremi Unuttum Linki */}
+
+        {/* Hesabın Var mı? Linki */}
+        <div className="text-sm text-center mt-2">
+          Zaten bir hesabın var mı?{" "}
+          <a href="/login" className="text-[#763ebe] hover:underline">
+            Giriş Yap
+          </a>
+        </div>
       </form>
+
+      <div className="w-full  relative flex items-center justify-center text-center">
+        <img
+          src={Logo}
+          alt=""
+          className="absolute w-full opacity-20 drop-shadow-lg"
+        />
+        <span className="relative z-10 text-5xl text-white font-black">
+          Sınırları zorlamaya hazır mısın? En ikonik sneaker'ların dünyasına
+          adım at ve sadece bir adım ötede olan sınırsız stile sahip ol. Şimdi
+          kaydol, ilk adımı sen at!
+        </span>
+      </div>
     </div>
   );
 };

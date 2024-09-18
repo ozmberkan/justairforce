@@ -4,10 +4,11 @@ import { loginscheme, registerscheme } from "~/validation/scheme";
 import { loginForm } from "~/data/data";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "~/firebase/firebase";
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { useDispatch } from "react-redux";
 import { setUser } from "~/redux/slices/userSlice";
 import { useNavigate } from "react-router-dom";
+import Logo from "~/assets/Svg/Logo.svg";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -50,46 +51,66 @@ const Login = () => {
     }
   };
   return (
-    <div className="flex flex-grow justify-center items-center">
+    <div className="flex w-full px-24 flex-grow justify-start items-center bg-bannerHistory bg-center bg-cover gap-x-12">
       <form
         onSubmit={handleSubmit(loginHandle)}
-        className="space-y-6 w-full max-w-md mx-auto bg-white p-6"
+        className="w-full max-w-md  bg-white p-6 rounded-lg shadow-lg border flex flex-col gap-y-3"
       >
-        <div className="space-y-2 flex flex-col">
-          <label htmlFor="email">E-posta</label>
-          <input
-            id="email"
-            type="email"
-            placeholder="ornek@email.com"
-            {...register("email")}
-            className="px-4 py-2 rounded-md border"
-          />
-          {errors.email && (
-            <p className="text-sm text-red-500">{errors.email.message}</p>
-          )}
-        </div>
-
-        <div className="space-y-2 flex flex-col">
-          <label htmlFor="password">Şifre</label>
-          <input
-            id="password"
-            type="password"
-            placeholder="••••••••"
-            {...register("password")}
-            className="px-4 py-2 rounded-md border"
-          />
-          {errors.password && (
-            <p className="text-sm text-red-500">{errors.password.message}</p>
-          )}
+        <h1 className="text-2xl font-semibold mb-5 ">Giriş Yap</h1>
+        {loginForm.map((input) => (
+          <div key={input.name} className="space-y-2 flex flex-col">
+            <label
+              htmlFor={input.name}
+              className="text-sm font-medium text-gray-600"
+            >
+              {input.placeholder}
+            </label>
+            <input
+              id={input.name}
+              type={input.type}
+              {...register(input.name)}
+              placeholder={input.placeholder}
+              className="px-4 py-2 rounded-md border outline-none  focus:ring-1 ring-offset-2 focus:ring-[#763ebe] transition-all duration-300"
+            />
+          </div>
+        ))}
+        <div className="text-sm text-end ">
+          <a href="/forgot-password" className="text-[#763ebe] hover:underline">
+            Şifreni mi unuttun?
+          </a>
         </div>
 
         <button
           type="submit"
-          className="w-full bg-black text-white p-3 rounded-md"
+          className="px-4 py-1.5 rounded-md text-white bg-gradient-to-r from-black to-[#5B348F] transition-colors duration-500"
         >
           Giriş Yap
         </button>
+
+        {/* Şifremi Unuttum Linki */}
+
+        {/* Hesabın Var mı? Linki */}
+        <div className="text-sm text-center mt-2">
+          Hesabın yok mu?
+          <a href="/register" className="text-[#763ebe] hover:underline">
+            Kayıt Ol
+          </a>
+        </div>
       </form>
+
+      <div className="w-full  relative flex items-center justify-center text-center">
+        <img
+          src={Logo}
+          alt="Logo"
+          className="absolute w-full opacity-20 drop-shadow-lg"
+        />
+        <span className="relative z-10 text-5xl text-white font-semibold flex flex-col gap-y-4">
+          <p className="font-black">Tekrar Hoş Geldin, Şimdi Sahne Senin!</p>{" "}
+          Just Air Force ailesine geri dön! Stilinle fark yaratmaya ve sınırları
+          zorlamaya devam etmek için giriş yap. En ikonik sneaker’lar seni
+          bekliyor.
+        </span>
+      </div>
     </div>
   );
 };
