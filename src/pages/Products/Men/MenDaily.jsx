@@ -8,11 +8,12 @@ import { addToCartThunk, addToFavThunk } from "~/redux/slices/cartSlice";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { collection } from "firebase/firestore";
 import { db } from "~/firebase/firebase";
-import Skeleton from "react-loading-skeleton";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 const MenDaily = () => {
   const { user } = useSelector((store) => store.user);
+  const { theme } = useSelector((store) => store.theme);
   const dispatch = useDispatch();
 
   const [selectedSizes, setSelectedSizes] = useState({});

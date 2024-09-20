@@ -9,7 +9,6 @@ import {
   userTabs,
 } from "../../data/data";
 import { GoMoon, GoSun } from "react-icons/go";
-
 import { Link, useNavigate } from "react-router-dom";
 import TabMenu from "./Menu/TabMenu";
 import { useDispatch, useSelector } from "react-redux";
@@ -105,6 +104,22 @@ const Navbar = () => {
               >
                 Tüm Air Force'lar
               </Link>
+            </div>
+            <div>
+              <button
+                onClick={toggleTheme}
+                className="text-gray-800 hover:text-[#763ebe] transition-colors duration-200 text-sm font-medium items-center  sm:w-28 w-full  py-2"
+              >
+                {theme === "light" ? (
+                  <span className="text-xs bg-zinc-100 py-2 rounded-md px-4 w-full flex gap-x-5">
+                    <GoMoon /> Karanlık Mod
+                  </span>
+                ) : (
+                  <span className="text-xs bg-zinc-100 py-2 rounded-md px-4 w-full flex gap-x-5">
+                    <GoSun /> Aydınlık Mod
+                  </span>
+                )}
+              </button>
             </div>
             <hr />
             <div className="flex items-center gap-x-4 w-full">
