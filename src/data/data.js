@@ -1,6 +1,9 @@
 import { FiHeart, FiShoppingCart, FiUser } from "react-icons/fi";
 import { AiOutlineUserAdd } from "react-icons/ai";
 
+import Appstore from "~/assets/SocialMedia/appstore.svg";
+import Playstore from "~/assets/SocialMedia/googleplay.svg";
+import Huaweistore from "~/assets/SocialMedia/huawei.svg";
 
 export const navTabs = [
   {
@@ -80,3 +83,9 @@ export const MobileTabWomen = [
   {to: "/women-best-sellers",label: "Kadın En Çok Satanlar"},
   {to :"/women-daily", label: "Kadın Günlük Giyim"}
 ]
+
+export const socialMedia = [
+  { src: Appstore, alt: "appstore" },
+  { src: Playstore, alt: "playstore" },
+  { src: Huaweistore, alt: "huawei" },
+];
