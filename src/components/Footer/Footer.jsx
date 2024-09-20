@@ -22,7 +22,7 @@ const Footer = () => {
               <Link
                 key={tab.id}
                 to={tab.to}
-                className="text-black hover:text-zinc-700 transition-colors dark:text-white dark:hover:text-[#a771ee]"
+                className="text-black hover:text-[#a771ee] d transition-colors dark:text-white dark:hover:text-[#a771ee]"
               >
                 {tab.label}
               </Link>

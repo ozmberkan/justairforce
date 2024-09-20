@@ -62,7 +62,7 @@ const Register = () => {
     <div className="flex w-full sm:p-24 p-5 sm:flex-row flex-col flex-grow justify-start items-center bg-bannerHistory bg-center bg-cover gap-x-12">
       <form
         onSubmit={handleSubmit(registerHandle)}
-        className="w-full max-w-md  dark:text-white bg-white dark:bg-neutral-800 p-6 rounded-lg shadow-lg border flex flex-col gap-y-3"
+        className="w-full max-w-md  dark:text-white bg-white dark:bg-neutral-800  dark:border-neutral-500 p-6 rounded-lg shadow-lg border flex flex-col gap-y-3"
       >
         <h1 className="text-2xl font-semibold mb-5 ">Kayıt Ol</h1>
         {registerForm.map((input) => (

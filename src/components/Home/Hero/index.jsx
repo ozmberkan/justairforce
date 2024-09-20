@@ -18,7 +18,7 @@ const Hero = () => {
           </span>
           <Link
             to="/all-products"
-            className="py-1.5 bg-white text-black px-6 mt-3 border border-transparent hover:border-white hover:text-white hover:bg-transparent transition-colors duration-500 rounded-md"
+            className="py-1.5 bg-white dark:bg-black dark:text-white dark:border-neutral-800 text-black px-6 mt-3 border border-transparent hover:border-white hover:text-white hover:bg-transparent transition-colors duration-500 rounded-md"
           >
             Tüm Air Force Modelleri
           </Link>
