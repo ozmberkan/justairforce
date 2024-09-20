@@ -3,14 +3,15 @@ import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavToUser, updateUserCart } from "~/redux/slices/userSlice";
-import { arrayUnion, doc, updateDoc } from "firebase/firestore";
-import { db } from "~/firebase/firebase";
 import { toast } from "react-toastify";
 import { addToFavThunk } from "~/redux/slices/cartSlice";
+import { useState } from "react";
 
 const WomenDaily = () => {
   const { user } = useSelector((store) => store.user);
   const dispatch = useDispatch();
+
+  const [selectedSizes, setSelectedSizes] = useState({});
 
   const addToCart = async (item) => {
     if (!user) {
@@ -18,17 +19,28 @@ const WomenDaily = () => {
       return;
     }
 
+    const selectedSize = selectedSizes[item.id];
+
+    if (!selectedSize) {
+      toast.error("Lütfen bir beden seçiniz.");
+      return;
+    }
+
+    const { sizes, ...filteredItem } = item;
+
     const updatedCart = user.cart.map((sh) =>
       sh.id === item.id ? { ...sh, quantity: (sh.quantity || 1) + 1 } : sh
     );
+
     if (!updatedCart.some((sh) => sh.id === item.id)) {
-      const newItem = { ...item, quantity: 1 };
+      const newItem = { ...filteredItem, quantity: 1, size: selectedSize };
       updatedCart.push(newItem);
     }
 
-    dispatch(updateUserCart(updatedCart)); //localstorage
+    dispatch(updateUserCart(updatedCart));
+    dispatch(addToCartThunk({ item: filteredItem, user, updatedCart }));
 
-    dispatch(addToCartThunk({ item, user, updatedCart })); //firebase
+    setSelectedSizes((prev) => ({ ...prev, [item.id]: "" }));
   };
 
   const addToFavorites = async (item) => {
@@ -46,6 +58,10 @@ const WomenDaily = () => {
     dispatch(addFavToUser(item));
     dispatch(addToFavThunk({ item, user }));
     toast.success("Başarıyla favorilere eklendi!");
+  };
+
+  const handleSizeSelection = (itemId, size) => {
+    setSelectedSizes((prev) => ({ ...prev, [itemId]: size }));
   };
 
   return (
@@ -80,6 +96,21 @@ const WomenDaily = () => {
               </div>
             </div>
             <img src={sh.image} className="rounded-md" />
+            <div className="w-full py-2 flex flex-wrap  justify-start  gap-x-2">
+              {sh?.sizes?.map((size) => (
+                <button
+                  onClick={() => handleSizeSelection(sh.id, size.size)}
+                  key={size.id}
+                  className={`px-2 py-1 border-2 rounded-md border-neutral-300 hover:bg-black hover:text-white ${
+                    selectedSizes[sh.id] === size.size
+                      ? "bg-neutral-700 text-white"
+                      : ""
+                  }`}
+                >
+                  {size.size}
+                </button>
+              ))}
+            </div>
             <button
               onClick={() => addToFavorites(sh)}
               className="w-full border p-2 rounded-md flex justify-center items-center gap-x-3 hover:border-red-500 transition-colors"

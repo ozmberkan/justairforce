@@ -218,7 +218,7 @@ const Navbar = () => {
                   <Link
                     to={tab?.href}
                     key={tab.id}
-                    className="px-4 py-1.5 rounded-md font-medium text-white bg-gradient-to-r from-black to-[#5B348F] transition-colors duration-500 flex gap-x-1 items-center text-sm"
+                    className="px-4 py-1.5 rounded-md font-medium text-white bg-black hover:bg-neutral-700 transition-colors  flex gap-x-1 items-center text-sm"
                   >
                     <tab.icon size={16} />
                     {tab.label}

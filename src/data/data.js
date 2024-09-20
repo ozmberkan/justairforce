@@ -53,58 +53,45 @@ export const rightTab = [
   { id: 2, icon: AiOutlineUserAdd, href: "/register", label:"Kayıt Ol" },
 ];
 
+const defaultSizes = [
+  { id: 1, size: 37 },
+  { id: 2, size: 38 },
+  { id: 3, size: 39 },
+  { id: 4, size: 40 },
+  { id: 5, size: 41 },
+  { id: 6, size: 42 },
+  { id: 7, size: 43 },
+  { id: 8, size: 44 },
+  { id: 9, size: 45 },
+];
+
 export const allProducts = [
-  { id: "AF001", name: "Air Force", image: Shoe1, price: 100 },
-  { id: "AF002", name: "Air Force", image: Shoe2, price: 100 },
-  { id: "AF003", name: "Air Force", image: Shoe3, price: 100 },
-  { id: "AF004", name: "Air Force", image: Shoe4, price: 100 },
-  { id: "AF005", name: "Air Force", image: Shoe5, price: 100 },
-  { id: "AF006", name: "Air Force", image: Shoe6, price: 100 },
-  { id: "AF007", name: "Air Force", image: Shoe7, price: 100 },
-  { id: "AF008", name: "Air Force", image: Shoe8, price: 100 },
-  { id: "AF009", name: "Air Force", image: Shoe9, price: 100 },
-  { id: "AF010", name: "Air Force", image: Shoe10, price: 100 },
-  { id: "AF011", name: "Air Force", image: Shoe11, price: 100 },
-  { id: "AF012", name: "Air Force", image: Shoe12, price: 100 },
-  { id: "AF013", name: "Air Force", image: Shoe13, price: 100 },
-  { id: "AF014", name: "Air Force", image: Shoe14, price: 100 },
-  { id: "AF015", name: "Air Force", image: Shoe15, price: 100 },
+  { id: "AF001", name: "Air Force", image: Shoe1, price: 100, sizes: defaultSizes },
+  { id: "AF002", name: "Air Force", image: Shoe2, price: 100, sizes: defaultSizes },
+  { id: "AF003", name: "Air Force", image: Shoe3, price: 100, sizes: defaultSizes },
+  { id: "AF004", name: "Air Force", image: Shoe4, price: 100, sizes: defaultSizes },
+  { id: "AF005", name: "Air Force", image: Shoe5, price: 100, sizes: defaultSizes },
+  { id: "AF006", name: "Air Force", image: Shoe6, price: 100, sizes: defaultSizes },
+  { id: "AF007", name: "Air Force", image: Shoe7, price: 100, sizes: defaultSizes },
+  { id: "AF008", name: "Air Force", image: Shoe8, price: 100, sizes: defaultSizes },
+  { id: "AF009", name: "Air Force", image: Shoe9, price: 100, sizes: defaultSizes },
+  { id: "AF010", name: "Air Force", image: Shoe10, price: 100, sizes: defaultSizes },
+  { id: "AF011", name: "Air Force", image: Shoe11, price: 100, sizes: defaultSizes },
+  { id: "AF012", name: "Air Force", image: Shoe12, price: 100, sizes: defaultSizes },
+  { id: "AF013", name: "Air Force", image: Shoe13, price: 100, sizes: defaultSizes },
+  { id: "AF014", name: "Air Force", image: Shoe14, price: 100, sizes: defaultSizes },
+  { id: "AF015", name: "Air Force", image: Shoe15, price: 100, sizes: defaultSizes },
 ];
 
-export const favorites = [
-  { id: "AF001", name: "Air Force", image: Shoe1, price: 100 },
-  { id: "AF002", name: "Air Force", image: Shoe2, price: 100 },
-  { id: "AF003", name: "Air Force", image: Shoe3, price: 100 },
-  { id: "AF004", name: "Air Force", image: Shoe4, price: 100 },
-];
+export const favorites = allProducts.filter(product => product.id === "AF001" || product.id === "AF002" || product.id === "AF003" || product.id === "AF004");
 
-export const bestsellersMen = [
-  { id: "AF001", name: "Air Force One", image: Shoe1, price: 100 },
-  { id: "AF002", name: "Air Force", image: Shoe2, price: 100 },
-  { id: "AF003", name: "Air Force", image: Shoe3, price: 100 },
-  { id: "AF004", name: "Air Force", image: Shoe4, price: 100 },
-];
+export const bestsellersMen = allProducts.filter(product => product.id === "AF001" || product.id === "AF002" || product.id === "AF003" || product.id === "AF004");
 
-export const bestsellersWomen = [
-  { id: "AF005", name: "Air Force", image: Shoe5, price: 100 },
-  { id: "AF006", name: "Air Force", image: Shoe6, price: 100 },
-  { id: "AF007", name: "Air Force", image: Shoe7, price: 100 },
-  { id: "AF008", name: "Air Force", image: Shoe8, price: 100 },
-];
+export const bestsellersWomen = allProducts.filter(product => product.id === "AF005" || product.id === "AF006" || product.id === "AF007" || product.id === "AF008");
 
-export const dailyMen = [
-  { id: "AF004", name: "Air Force", image: Shoe4, price: 100 },
-  { id: "AF012", name: "Air Force", image: Shoe12, price: 100 },
-  { id: "AF003", name: "Air Force", image: Shoe3, price: 100 },
-  { id: "AF001", name: "Air Force", image: Shoe1, price: 100 },
-];
+export const dailyMen = allProducts.filter(product => product.id === "AF004" || product.id === "AF012" || product.id === "AF003" || product.id === "AF001");
 
-export const dailyWomen = [
-  { id: "AF012", name: "Air Force", image: Shoe12, price: 100 },
-  { id: "AF013", name: "Air Force", image: Shoe13, price: 100 },
-  { id: "AF014", name: "Air Force", image: Shoe14, price: 100 },
-  { id: "AF015", name: "Air Force", image: Shoe15, price: 100 },
-];
+export const dailyWomen = allProducts.filter(product => product.id === "AF012" || product.id === "AF013" || product.id === "AF014" || product.id === "AF015");
 
 
 export const registerForm = [

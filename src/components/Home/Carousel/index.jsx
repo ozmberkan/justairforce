@@ -28,9 +28,9 @@ const Carousel = () => {
       <div className="w-full">
         <Slider {...settings}>
           {favorites.map((item) => (
-            <div key={item.id}>
-              <div className="w-full h-full gap-x-2 flex items-center justify-center ">
-                <div className="border-4 border-neutral-900 cursor-grab  h-[400px] flex flex-col justify-start gap-y-5 w-[560px] rounded-xl p-4 ">
+            <div key={item.id} className="px-2">
+              <div className="w-full h-full flex flex-col items-center justify-center">
+                <div className="border-4 border-neutral-900 cursor-grab h-[400px] flex flex-col justify-start gap-y-5 w-full rounded-xl p-4">
                   <div className="flex justify-between p-1">
                     <h1 className="font-semibold text-xl">{item.name}</h1>
                     <Link
@@ -42,9 +42,7 @@ const Carousel = () => {
                   </div>
                   <img
                     src={item.image}
-                    alt="Shoe"
-                    width={1200}
-                    height={100}
+                    alt={item.name}
                     className="w-full h-[300px] object-cover rounded-md"
                   />
                 </div>

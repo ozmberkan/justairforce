@@ -57,7 +57,10 @@ const Cart = () => {
                   <h1 className="font-bold text-2xl text-gray-700">
                     {sh.name} x{sh.quantity || 1}
                   </h1>
-                  <span>{sh.price}₺</span>
+                  <div className="flex gap-x-2">
+                    <span>{sh.price}₺</span>
+                    <span>{sh.size} Numara</span>
+                  </div>
                 </div>
                 <div>
                   <button

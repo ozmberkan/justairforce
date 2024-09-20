@@ -19,9 +19,6 @@ const AirForceCherry = () => {
           laboriosam ea dolorem doloremque fugiat architecto numquam repellendus
           totam, voluptatibus perspiciatis sint magnam quidem ex.
         </h1>
-        <button className="sm:w-1/4 bg-green-100 text-green-500 border-green-500 border  rounded-md px-4 py-2">
-          Sepete Ekle
-        </button>
       </div>
     </div>
   );
