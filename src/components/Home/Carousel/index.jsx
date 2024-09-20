@@ -43,8 +43,8 @@ const Carousel = () => {
         <Slider {...settings}>
           {newShoes?.map((item) => (
             <div key={item.id} className="px-2">
-              <div className="w-full h-full flex flex-col items-center justify-center">
-                <div className="border-4 dark:bg-neutral-800 border-neutral-900 dark:border-white cursor-grab h-[400px] flex flex-col justify-start gap-y-5 w-full rounded-xl p-4">
+              <div className="w-full h-[full] flex flex-col items-center justify-center">
+                <div className="border-4 dark:bg-neutral-800 border-neutral-900 dark:border-white cursor-grab h-[450px] flex flex-col justify-start gap-y-5 w-full rounded-xl p-4">
                   <div className="flex justify-between p-1 dark:text-white">
                     <h1 className="font-semibold text-xl">{item.name}</h1>
                     <Link
