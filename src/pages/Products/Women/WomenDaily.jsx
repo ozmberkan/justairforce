@@ -10,6 +10,8 @@ import { collection } from "firebase/firestore";
 import { db } from "~/firebase/firebase";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { BsCart4 } from "react-icons/bs";
+import { GoInfo } from "react-icons/go";
 
 const WomenDaily = () => {
   const { user } = useSelector((store) => store.user);
@@ -107,16 +109,24 @@ const WomenDaily = () => {
               <div className="flex gap-x-2">
                 <button
                   onClick={() => addToCart(sh)}
-                  className="bg-emerald-100 text-emerald-500 p-2 rounded-md hover:bg-emerald-200 hover:text-emerald-600 dark:bg-black dark:text-white"
+                  className="bg-emerald-100 dark:hover:bg-neutral-800 transition-colors duration-300 text-emerald-500 p-2 rounded-md hover:bg-emerald-200 hover:text-emerald-600 dark:bg-black dark:text-white"
                 >
-                  Sepete Ekle
+                  <BsCart4 size={20} />
                 </button>
                 <Link
                   to={`/products/${sh.id}`}
-                  className="bg-sky-100 text-sky-500 p-2 rounded-md hover:bg-blue-200 hover:text-blue-600 dark:bg-black dark:text-white"
+                  className="bg-sky-100 dark:hover:bg-neutral-800 transition-colors duration-300 text-sky-500 p-2 rounded-md hover:bg-blue-200 hover:text-blue-600 dark:bg-black dark:text-white"
                 >
-                  Detay
+                  <GoInfo size={20} />
                 </Link>
+                <button
+                  onClick={() => addToFavorites(sh)}
+                  className="bg-red-100 dark:hover:bg-neutral-800 transition-colors duration-300 p-2 rounded-md hover:bg-red-200 dark:bg-black dark:text-white"
+                >
+                  <span className="text-red-500">
+                    <FaHeart size={18} />
+                  </span>
+                </button>
               </div>
             </div>
 
@@ -143,7 +153,7 @@ const WomenDaily = () => {
               <img
                 src={sh.image}
                 alt={sh.name}
-                className={`w-full h-full object-cover rounded-md transition-opacity duration-500 ${
+                className={`w-full h-full object-cover rounded-md transition-all duration-500 bg-neutral-100 dark:bg-neutral-800  ${
                   loadedImages[sh.id] ? "opacity-100" : "opacity-0"
                 }`}
                 onLoad={() => handleImageLoad(sh.id)}

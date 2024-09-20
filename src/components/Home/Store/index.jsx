@@ -10,8 +10,9 @@ const Store = () => {
             Yüzlerce Air Force arasından en sevdiğini daha kolay bir şekilde
             seçebilmen için tasarlandı.
           </p>
-          {socialMedia.map((sMedia) => (
+          {socialMedia.map((sMedia, i) => (
             <img
+              key={i}
               src={sMedia.src}
               alt={sMedia.alt}
               className="w-56 hover:scale-105 transform transition-all duration-300 cursor-pointer"

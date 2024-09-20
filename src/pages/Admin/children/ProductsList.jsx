@@ -1,7 +1,20 @@
+import { collection, doc, deleteDoc } from "firebase/firestore";
 import React from "react";
-import { FiEdit, FiTrash, FiTrash2 } from "react-icons/fi";
+import { FiEdit, FiTrash2 } from "react-icons/fi";
+import { toast } from "react-toastify";
+import { db } from "~/firebase/firebase";
 
-const ProductsList = ({ productData }) => {
+const ProductsList = ({ productData, handleProductEdit }) => {
+  const deleteProduct = async (id) => {
+    try {
+      const productRef = doc(db, "shoes", id); // Burada sadece doc() kullanıyoruz.
+      await deleteDoc(productRef); // deleteDoc ile ürünü siliyoruz.
+      toast.success("Ürün Başarıyla Silindi!");
+    } catch (error) {
+      toast.error("Ürün Silinirken Bir Hata Oluştu! " + error.message);
+    }
+  };
+
   return (
     <div className="relative overflow-x-auto border rounded-md">
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -43,10 +56,16 @@ const ProductsList = ({ productData }) => {
                 <img src={product.image} className="w-12 rounded-md" />
               </td>
               <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white flex gap-x-2">
-                <button className="bg-neutral-900 hover:bg-neutral-800 text-white p-2 rounded-md">
+                <button
+                  onClick={() => handleProductEdit(product)}
+                  className="bg-neutral-900 hover:bg-neutral-800 text-white p-2 rounded-md"
+                >
                   <FiEdit />
                 </button>
-                <button className="bg-neutral-900 hover:bg-neutral-800 text-white p-2 rounded-md ">
+                <button
+                  onClick={() => deleteProduct(product.mainId)} // Doğru ID'yi burada kullanıyoruz.
+                  className="bg-neutral-900 hover:bg-neutral-800 text-white p-2 rounded-md "
+                >
                   <FiTrash2 />
                 </button>
               </td>

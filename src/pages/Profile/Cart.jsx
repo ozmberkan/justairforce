@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { db } from "~/firebase/firebase";
 import { updateUserCart } from "~/redux/slices/userSlice";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
+import CartBox from "./CartBox";
 
 const Cart = () => {
   const { user } = useSelector((store) => store.user);
@@ -50,33 +51,7 @@ const Cart = () => {
       >
         {user.cart.length > 0 ? (
           user?.cart.map((sh) => (
-            <div
-              key={sh.id}
-              className="border  dark:border-neutral-500 p-3 flex flex-col gap-y-2 rounded-md bg-white dark:bg-neutral-800"
-            >
-              <div className="flex justify-between items-center">
-                <div className="flex flex-col">
-                  <h1 className="font-bold text-2xl text-gray-700 dark:text-white">
-                    {sh.name} x{sh.quantity || 1}
-                  </h1>
-                  <div className="flex gap-x-2">
-                    <span className="dark:text-white">{sh.price}₺</span>
-                    <span className="dark:text-white">{sh.size} Numara</span>
-                  </div>
-                </div>
-                <div>
-                  <button
-                    onClick={() => deleteProduct(sh.id)}
-                    className="text-red-500 bg-red-100 px-4 py-2 rounded-md"
-                  >
-                    Sil
-                  </button>
-                </div>
-              </div>
-              {sh.image && (
-                <img src={sh.image} alt={sh.name} className="rounded-md" />
-              )}
-            </div>
+            <CartBox key={sh.id} sh={sh} deleteProduct={deleteProduct} />
           ))
         ) : (
           <div className="w-full bg-red-100 text-red-500 px-4 py-2 rounded">

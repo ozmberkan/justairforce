@@ -4,6 +4,7 @@ import { AiOutlineUserAdd } from "react-icons/ai";
 import Appstore from "~/assets/SocialMedia/appstore.svg";
 import Playstore from "~/assets/SocialMedia/googleplay.svg";
 import Huaweistore from "~/assets/SocialMedia/huawei.svg";
+import { name } from "@cloudinary/url-gen/actions/namedTransformation";
 
 export const navTabs = [
   {
@@ -89,3 +90,16 @@ export const socialMedia = [
   { src: Playstore, alt: "playstore" },
   { src: Huaweistore, alt: "huawei" },
 ];
+
+export const productEditForm = [
+  {id:1, type:"text",name:"id"},
+  {id:2, type:"text",name:"name"},
+  {id:3, type:"text",name:"price"},
+  {id:4, type:"text",name:"image"},
+]
+
+export const userEditForm = [
+  {id:1, type:"text",name:"displayName"},
+  {id:2, type:"text",name:"email"},
+  {id:3, name:"admin",type:"select",options:[{value:true,label:"Yetkili"},{value:false,label:"Kullanıcı"}]}
+]
