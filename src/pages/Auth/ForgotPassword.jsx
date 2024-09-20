@@ -16,7 +16,7 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="flex w-full px-24 flex-grow justify-start items-center bg-bannerHistory bg-center bg-cover gap-x-12">
+    <div className="flex w-full sm:flex-row flex-col sm:p-24 p-5 flex-grow justify-start items-center bg-bannerHistory bg-center bg-cover gap-x-12">
       <form
         onSubmit={sendEmail}
         className="w-full max-w-md  bg-white p-6 rounded-lg shadow-lg border flex flex-col gap-y-3"
@@ -43,7 +43,7 @@ const ForgotPassword = () => {
         </button>
       </form>
 
-      <div className="w-full  relative flex items-center justify-center text-center">
+      <div className="w-full  relative sm:flex items-center justify-center text-center hidden">
         <img
           src={Logo}
           alt="Logo"
