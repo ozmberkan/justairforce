@@ -57,7 +57,7 @@ const Navbar = () => {
         <BottomSheet open={open} onDismiss={onDismiss}>
           <div className="p-5 flex flex-col gap-y-2">
             <div className="flex flex-col gap-y-1">
-              <h1 className="dark:text-white text-zinc-700">
+              <h1 className="dark:text-black text-zinc-700">
                 Yeni Air Force'lar
               </h1>
               {MobileTabSingleShoes.map((shoe, i) => (
@@ -65,44 +65,44 @@ const Navbar = () => {
                   key={i}
                   to={shoe.to}
                   onClick={onDismiss}
-                  className="text-xs bg-zinc-100 dark:bg-zinc-700 dark:text-white py-2 rounded-md px-4"
+                  className="text-xs bg-zinc-100 dark:bg-zinc-100 dark:text-zinc-800 py-2 rounded-md px-4"
                 >
                   {shoe.label}
                 </Link>
               ))}
             </div>
             <div className="flex flex-col gap-y-1">
-              <h1 className="dark:text-white text-zinc-700">Erkek</h1>
+              <h1 className="dark:text-black text-zinc-700">Erkek</h1>
               {MobileTabMen.map((shoe, i) => (
                 <Link
                   key={i}
                   to={shoe.to}
                   onClick={onDismiss}
-                  className="text-xs bg-zinc-100 dark:bg-zinc-700 dark:text-white py-2 rounded-md px-4"
+                  className="text-xs bg-zinc-100 dark:bg-zinc-100 dark:text-zinc-800 py-2 rounded-md px-4"
                 >
                   {shoe.label}
                 </Link>
               ))}
             </div>
             <div className="flex flex-col gap-y-1">
-              <h1 className="dark:text-white text-zinc-700">Kadın</h1>
+              <h1 className="dark:text-black text-zinc-700">Kadın</h1>
               {MobileTabWomen.map((shoe, i) => (
                 <Link
                   key={i}
                   to={shoe.to}
                   onClick={onDismiss}
-                  className="text-xs bg-zinc-100 dark:bg-zinc-700 dark:text-white py-2 rounded-md px-4"
+                  className="text-xs bg-zinc-100 dark:bg-zinc-100 dark:text-zinc-800 py-2 rounded-md px-4"
                 >
                   {shoe.label}
                 </Link>
               ))}
             </div>
             <div className="flex flex-col gap-y-1">
-              <h1 className="dark:text-white text-zinc-700">Tümü</h1>
+              <h1 className="dark:text-black text-zinc-700">Tümü</h1>
               <Link
                 to="/all-products"
                 onClick={onDismiss}
-                className="text-xs bg-zinc-100 dark:bg-zinc-700 dark:text-white py-2 rounded-md px-4"
+                className="text-xs bg-zinc-100 dark:bg-zinc-100 dark:text-zinc-800 py-2 rounded-md px-4"
               >
                 Tüm Air Force'lar
               </Link>
