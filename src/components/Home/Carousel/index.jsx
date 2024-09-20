@@ -44,12 +44,12 @@ const Carousel = () => {
           {newShoes?.map((item) => (
             <div key={item.id} className="px-2">
               <div className="w-full h-[full] flex flex-col items-center justify-center">
-                <div className="border-4 dark:bg-neutral-800 border-neutral-900 dark:border-white cursor-grab h-[450px] flex flex-col justify-start gap-y-5 w-full rounded-xl p-4">
+                <div className="border-4 dark:bg-transparent border-neutral-900 dark:border-neutral-600 cursor-grab h-[450px] flex flex-col justify-start gap-y-5 w-full rounded-xl p-4">
                   <div className="flex justify-between p-1 dark:text-white">
                     <h1 className="font-semibold text-xl">{item.name}</h1>
                     <Link
                       to={`/products/${item.id}`}
-                      className="px-4 py-1.5 rounded-md text-white bg-gradient-to-r from-black to-[#5B348F] transition-colors duration-500 dark:from-black dark:to-black"
+                      className="px-4 py-1.5 rounded-md text-white bg-gradient-to-r from-black dark:hover:from-neutral-700  to-[#5B348F] transition-colors duration-500 dark:from-black dark:to-black"
                     >
                       Ürün Detayı
                     </Link>
@@ -57,7 +57,7 @@ const Carousel = () => {
                   <img
                     src={item.image}
                     alt={item.name}
-                    className="w-full h-[300px] object-cover rounded-md"
+                    className="w-full h-[330px] object-cover rounded-md dark:bg-neutral-800 bg-neutral-200"
                   />
                 </div>
               </div>
