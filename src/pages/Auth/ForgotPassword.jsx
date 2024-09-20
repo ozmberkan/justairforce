@@ -19,25 +19,25 @@ const ForgotPassword = () => {
     <div className="flex w-full sm:flex-row flex-col sm:p-24 p-5 flex-grow justify-start items-center bg-bannerHistory bg-center bg-cover gap-x-12">
       <form
         onSubmit={sendEmail}
-        className="w-full max-w-md  bg-white p-6 rounded-lg shadow-lg border flex flex-col gap-y-3"
+        className="w-full max-w-md  dark:border-neutral-500 dark:text-white bg-white dark:bg-neutral-800 p-6 rounded-lg shadow-lg border flex flex-col gap-y-3"
       >
         <h1 className="text-2xl font-semibold mb-5 ">Şifreni Sıfırla</h1>
 
         <div className="space-y-2 flex flex-col">
-          <label className="text-sm font-medium text-gray-600">
+          <label className="text-sm font-medium text-gray-600 dark:text-white">
             Şifre Sıfırlama Bağlantısı
           </label>
           <input
             type="text"
             onChange={(e) => setEmail(e.target.value)}
             placeholder="E-Posta Giriniz..."
-            className="px-4 py-2 rounded-md border outline-none  focus:ring-1 ring-offset-2 focus:ring-[#763ebe] transition-all duration-300"
+            className="px-4 py-2 rounded-md dark:bg-neutral-800 border outline-none  focus:ring-1 ring-offset-2 focus:ring-[#763ebe] transition-all duration-300"
           />
         </div>
 
         <button
           type="submit"
-          className="px-4 py-1.5 rounded-md text-white bg-gradient-to-r from-black to-[#5B348F] transition-colors duration-500"
+          className="px-4 py-1.5 rounded-md text-white bg-gradient-to-r from-black to-[#5B348F] transition-colors duration-500 dark:from-black dark:to-black"
         >
           Gönder
         </button>

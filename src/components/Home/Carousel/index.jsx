@@ -49,7 +49,7 @@ const Carousel = () => {
                     <h1 className="font-semibold text-xl">{item.name}</h1>
                     <Link
                       to={`/products/${item.id}`}
-                      className="px-4 py-1.5 rounded-md text-white bg-gradient-to-r from-black to-[#5B348F] transition-colors duration-500 dark:text-white"
+                      className="px-4 py-1.5 rounded-md text-white bg-gradient-to-r from-black to-[#5B348F] transition-colors duration-500 dark:from-black dark:to-black"
                     >
                       Ürün Detayı
                     </Link>

@@ -54,14 +54,14 @@ const Login = () => {
     <div className="flex w-full sm:flex-row flex-col sm:p-24 p-5 flex-grow justify-start items-center bg-bannerHistory bg-center bg-cover gap-x-12">
       <form
         onSubmit={handleSubmit(loginHandle)}
-        className="w-full sm:max-w-md  bg-white p-6 rounded-lg shadow-lg border flex flex-col gap-y-3"
+        className="w-full sm:max-w-md  bg-white dark:bg-neutral-800 dark:border-neutral-500 dark:text-white p-6 rounded-lg shadow-lg border flex flex-col gap-y-3"
       >
         <h1 className="text-2xl font-semibold mb-5 ">Giriş Yap</h1>
         {loginForm.map((input) => (
           <div key={input.name} className="space-y-2 flex flex-col">
             <label
               htmlFor={input.name}
-              className="text-sm font-medium text-gray-600"
+              className="text-sm font-medium text-gray-600 dark:text-white"
             >
               {input.placeholder}
             </label>
@@ -70,7 +70,7 @@ const Login = () => {
               type={input.type}
               {...register(input.name)}
               placeholder={input.placeholder}
-              className="px-4 py-2 rounded-md border outline-none  focus:ring-1 ring-offset-2 focus:ring-[#763ebe] transition-all duration-300"
+              className="px-4 py-2 rounded-md border outline-none  focus:ring-1 ring-offset-2 focus:ring-[#763ebe] transition-all duration-300 dark:bg-neutral-800"
             />
           </div>
         ))}
@@ -82,7 +82,7 @@ const Login = () => {
 
         <button
           type="submit"
-          className="px-4 py-1.5 rounded-md text-white bg-gradient-to-r from-black to-[#5B348F] transition-colors duration-500"
+          className="px-4 py-1.5 rounded-md text-white bg-gradient-to-r from-black to-[#5B348F] transition-colors duration-500 dark:from-black dark:to-black"
         >
           Giriş Yap
         </button>
