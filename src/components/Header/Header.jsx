@@ -57,7 +57,9 @@ const Navbar = () => {
         <BottomSheet open={open} onDismiss={onDismiss}>
           <div className="p-5 flex flex-col gap-y-2">
             <div className="flex flex-col gap-y-1">
-              <h1 className="dark:text-white">Yeni Air Force'lar</h1>
+              <h1 className="dark:text-white text-zinc-700">
+                Yeni Air Force'lar
+              </h1>
               {MobileTabSingleShoes.map((shoe, i) => (
                 <Link
                   key={i}
@@ -70,7 +72,7 @@ const Navbar = () => {
               ))}
             </div>
             <div className="flex flex-col gap-y-1">
-              <h1 className="dark:text-white">Erkek</h1>
+              <h1 className="dark:text-white text-zinc-700">Erkek</h1>
               {MobileTabMen.map((shoe, i) => (
                 <Link
                   key={i}
@@ -83,7 +85,7 @@ const Navbar = () => {
               ))}
             </div>
             <div className="flex flex-col gap-y-1">
-              <h1 className="dark:text-white">Kadın</h1>
+              <h1 className="dark:text-white text-zinc-700">Kadın</h1>
               {MobileTabWomen.map((shoe, i) => (
                 <Link
                   key={i}
@@ -96,7 +98,7 @@ const Navbar = () => {
               ))}
             </div>
             <div className="flex flex-col gap-y-1">
-              <h1 className="dark:text-white">Tümü</h1>
+              <h1 className="dark:text-white text-zinc-700">Tümü</h1>
               <Link
                 to="/all-products"
                 onClick={onDismiss}
