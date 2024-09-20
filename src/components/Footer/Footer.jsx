@@ -5,7 +5,7 @@ import { footerTabs } from "~/data/data";
 
 const Footer = () => {
   return (
-    <footer className="sm:bg-white   border-t text-black py-6 mt-auto">
+    <footer className="sm:bg-white dark:bg-neutral-800 dark:border-neutral-600 transition-colors duration-500  border-t text-black py-6 mt-auto">
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex flex-col w-full  sm:flex-row sm:justify-between justify-start items-center  ">
           <div className="mb-4 md:mb-0 sm:w-auto w-full flex justify-center items-center">
@@ -22,7 +22,7 @@ const Footer = () => {
               <Link
                 key={tab.id}
                 to={tab.to}
-                className="text-black hover:text-zinc-700 transition-colors"
+                className="text-black hover:text-zinc-700 transition-colors dark:text-white "
               >
                 {tab.label}
               </Link>
@@ -30,8 +30,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-6 text-center border-t border-gray-700 pt-4">
-          <p className="text-gray-500 text-sm">
+        <div className="mt-6 text-center border-t border-gray-700  pt-4">
+          <p className="text-gray-500 dark:text-white  text-sm">
             &copy; 2024 JustAirForce. Tüm Hakları Saklıdır!
           </p>
         </div>

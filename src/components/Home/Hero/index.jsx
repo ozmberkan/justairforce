@@ -3,7 +3,7 @@ import Shoe2 from "~/assets/Banners/Shoe2.png";
 
 const Hero = () => {
   return (
-    <div className="w-full h-[500px] bg-banner bg-center bg-cover bg-no-repeat relative flex justify-center items-center">
+    <div className="w-full h-[500px] bg-banner bg-center bg-cover bg-no-repeat relative flex justify-center items-center dark:shadow-[inset_0px_-300px_500px_#000]">
       <div className="w-full flex justify-start items-center sm:flex-row flex-col gap-y-2 ">
         <div className="flex flex-col gap-y-2 sm:gap-y-4 sm:items-start items-center justify-center w-full sm:px-24 text-white ">
           <h1 className="sm:text-[70px] text-4xl font-black bg-gradient-to-r">

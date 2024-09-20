@@ -26,6 +26,7 @@ import Cart from "./pages/Profile/Cart";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
+import AdminPanel from "./pages/Admin/AdminPanel";
 
 const App = () => {
   const { user } = useSelector((store) => store.user);
@@ -70,6 +71,12 @@ const App = () => {
           />
 
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route
+            path="/panel"
+            element={
+              user?.admin === true ? <AdminPanel /> : <Navigate to="/" />
+            }
+          />
         </Routes>
         <Footer />
       </div>

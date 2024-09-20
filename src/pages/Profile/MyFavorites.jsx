@@ -30,7 +30,9 @@ const MyFavorites = () => {
   return (
     <div className="w-full px-7 py-6 flex flex-col gap-y-6">
       <div className="flex justify-between items-center w-full">
-        <h1 className="text-3xl font-semibold text-gray-700">Favorilerim</h1>
+        <h1 className="text-3xl font-semibold text-gray-700 dark:text-white">
+          Favorilerim
+        </h1>
       </div>
       <div
         className="grid sm:grid-cols-4 grid-cols-1 gap-5"
@@ -40,14 +42,14 @@ const MyFavorites = () => {
           user?.favorites.map((sh) => (
             <div
               key={sh.id}
-              className="border p-3 flex flex-col gap-y-2 rounded-md bg-white"
+              className="border dark:border-neutral-600 p-3 flex flex-col gap-y-2 rounded-md bg-white dark:bg-neutral-800"
             >
               <div className="flex justify-between items-center">
                 <div className="flex flex-col">
-                  <h1 className="font-bold text-2xl text-gray-700">
+                  <h1 className="font-bold text-2xl text-gray-700 dark:text-white">
                     {sh.name}
                   </h1>
-                  <span>{sh.price}₺</span>
+                  <span className="dark:text-white">{sh.price}₺</span>
                 </div>
                 <div>
                   <button

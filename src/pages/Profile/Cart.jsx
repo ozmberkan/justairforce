@@ -34,7 +34,9 @@ const Cart = () => {
   return (
     <div className="w-full px-7 py-6 flex flex-col gap-y-6">
       <div className="flex justify-between items-center w-full">
-        <h1 className="text-3xl font-semibold text-gray-700">Sepetim</h1>
+        <h1 className="text-3xl font-semibold text-gray-700 dark:text-white">
+          Sepetim
+        </h1>
         <span className="px-4 py-2 rounded-md border bg-zinc-100 outline-none">
           {`Toplam: ${user.cart.reduce(
             (acc, item) => acc + item.price * item.quantity,
@@ -50,16 +52,16 @@ const Cart = () => {
           user?.cart.map((sh) => (
             <div
               key={sh.id}
-              className="border p-3 flex flex-col gap-y-2 rounded-md bg-white"
+              className="border  dark:border-neutral-500 p-3 flex flex-col gap-y-2 rounded-md bg-white dark:bg-neutral-800"
             >
               <div className="flex justify-between items-center">
                 <div className="flex flex-col">
-                  <h1 className="font-bold text-2xl text-gray-700">
+                  <h1 className="font-bold text-2xl text-gray-700 dark:text-white">
                     {sh.name} x{sh.quantity || 1}
                   </h1>
                   <div className="flex gap-x-2">
-                    <span>{sh.price}₺</span>
-                    <span>{sh.size} Numara</span>
+                    <span className="dark:text-white">{sh.price}₺</span>
+                    <span className="dark:text-white">{sh.size} Numara</span>
                   </div>
                 </div>
                 <div>

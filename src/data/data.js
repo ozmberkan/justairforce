@@ -65,3 +65,18 @@ export const footerTabs = [
   {id:4,to:"/women-best-sellers",label:"Kadın Çok Satanlar"},
 
 ]
+
+export const MobileTabSingleShoes = [
+  {to:"/airforceone",label:"Air Force One"},
+  {to:"/airforcerainbow",label:"Air Force Rainbow"},
+  {to:"/airforcecherry",label:"Air Force Cherry"}
+]
+
+export const MobileTabMen = [
+  {to: "/men-best-sellers",label: "Erkek En Çok Satanlar"},
+  {to :"/men-daily", label: "Erkek Günlük Giyim"}
+]
+export const MobileTabWomen = [
+  {to: "/women-best-sellers",label: "Kadın En Çok Satanlar"},
+  {to :"/women-daily", label: "Kadın Günlük Giyim"}
+]

@@ -83,30 +83,32 @@ const AllProducts = () => {
 
   return (
     <div className="w-full px-7 py-6 flex flex-col gap-y-6">
-      <h1 className="text-3xl font-semibold text-gray-700">
+      <h1 className="text-3xl font-semibold text-gray-700 dark:text-white">
         Tüm Air Force'lar
       </h1>
       <div className="grid sm:grid-cols-4 grid-cols-1 gap-5">
         {allproductsData?.map((sh) => (
           <div
             key={sh.id}
-            className="border p-3 flex flex-col gap-y-4 rounded-md"
+            className="border dark:border-neutral-600 p-3 flex flex-col gap-y-4 rounded-md"
           >
             <div className="flex justify-between items-center">
               <div className="flex flex-col">
-                <h1 className="font-bold text-2xl text-gray-700">{sh.name}</h1>
-                <span>{sh.price}₺</span>
+                <h1 className="font-bold text-2xl text-gray-700 dark:text-white">
+                  {sh.name}
+                </h1>{" "}
+                <span className="dark:text-white">{sh.price}₺</span>
               </div>
               <div className="flex gap-x-2">
                 <button
                   onClick={() => addToCart(sh)}
-                  className="bg-emerald-100 text-emerald-500 p-2 rounded-md hover:bg-emerald-200 hover:text-emerald-600"
+                  className="bg-emerald-100 text-emerald-500 p-2 rounded-md hover:bg-emerald-200 hover:text-emerald-600 dark:bg-black dark:text-white"
                 >
                   Sepete Ekle
                 </button>
                 <Link
                   to={`/products/${sh.id}`}
-                  className="bg-sky-100 text-sky-500 p-2 rounded-md hover:bg-blue-200 hover:text-blue-600"
+                  className="bg-sky-100 text-sky-500 p-2 rounded-md hover:bg-blue-200 hover:text-blue-600 dark:bg-black dark:text-white"
                 >
                   Detay
                 </Link>
@@ -137,7 +139,7 @@ const AllProducts = () => {
                 <button
                   onClick={() => handleSizeSelection(sh.id, size)}
                   key={size}
-                  className={`px-2 py-1 border-2 rounded-md border-neutral-300 hover:bg-black hover:text-white ${
+                  className={`px-2 py-1 border-2 rounded-md dark:text-white border-neutral-300 hover:bg-black hover:text-white ${
                     selectedSizes[sh.id] === size
                       ? "bg-neutral-700 text-white"
                       : ""
@@ -150,7 +152,7 @@ const AllProducts = () => {
 
             <button
               onClick={() => addToFavorites(sh)}
-              className="w-full border p-2 rounded-md flex justify-center items-center gap-x-3 hover:border-red-500 transition-colors"
+              className="w-full border p-2 rounded-md dark:border-red-500 flex justify-center items-center gap-x-3 hover:border-red-500 transition-colors"
             >
               <span className="text-red-500">
                 <FaHeart size={18} />

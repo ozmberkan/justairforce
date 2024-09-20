@@ -7,7 +7,7 @@ const Announcement = () => {
         className="bg-bannerHistory sm:w-2/3 w-full h-full bg-cover bg-center bg-no-repeat rounded-xl flex justify-center items-center 
       shadow-[0_20px_250px_rgba(91,_52,_143,_1)]"
       >
-        <div className="w-full relative h-full flex flex-col gap-y-5 justify-center items-start sm:px-12 px-7 text-white ring-2 ring-offset-2 rounded-xl ring-black">
+        <div className="w-full relative h-full flex flex-col gap-y-5 justify-center items-start sm:px-12 px-7 text-white dark:ring-offset-transparent ring-2 ring-offset-2 rounded-xl ring-black">
           <div className="z-10 flex flex-col gap-y-5">
             <h1 className="sm:text-4xl text-2xl font-bold">
               Bir efsanenin doğuşu!

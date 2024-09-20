@@ -7,7 +7,7 @@ import Huaweistore from "~/assets/SocialMedia/huawei.svg";
 const Store = () => {
   return (
     <div className="w-full h-[600px] flex justify-center items-center p-12">
-      <div className="w-full bg-appBanner h-full bg-no-repeat bg-center bg-cover rounded-xl border flex">
+      <div className="w-full bg-appBanner h-full bg-no-repeat bg-center bg-cover rounded-xl border dark:border-neutral-900 flex">
         <div className="w-full h-full  flex flex-col items-end justify-center gap-y-5 p-12 text-white sm:text-right text-center">
           <h1 className="text-3xl font-bold">AirForce'ı indir!</h1>
           <p className="text-center font-semibold">
