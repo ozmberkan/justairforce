@@ -57,50 +57,50 @@ const Navbar = () => {
         <BottomSheet open={open} onDismiss={onDismiss}>
           <div className="p-5 flex flex-col gap-y-2">
             <div className="flex flex-col gap-y-1">
-              <h1>Yeni Air Force'lar</h1>
+              <h1 className="dark:text-white">Yeni Air Force'lar</h1>
               {MobileTabSingleShoes.map((shoe, i) => (
                 <Link
                   key={i}
                   to={shoe.to}
                   onClick={onDismiss}
-                  className="text-xs bg-zinc-100 py-2 rounded-md px-4"
+                  className="text-xs bg-zinc-100 dark:bg-zinc-700 dark:text-white py-2 rounded-md px-4"
                 >
                   {shoe.label}
                 </Link>
               ))}
             </div>
             <div className="flex flex-col gap-y-1">
-              <h1>Erkek</h1>
+              <h1 className="dark:text-white">Erkek</h1>
               {MobileTabMen.map((shoe, i) => (
                 <Link
                   key={i}
                   to={shoe.to}
                   onClick={onDismiss}
-                  className="text-xs bg-zinc-100 py-2 rounded-md px-4"
+                  className="text-xs bg-zinc-100 dark:bg-zinc-700 dark:text-white py-2 rounded-md px-4"
                 >
                   {shoe.label}
                 </Link>
               ))}
             </div>
             <div className="flex flex-col gap-y-1">
-              <h1>Kadın</h1>
+              <h1 className="dark:text-white">Kadın</h1>
               {MobileTabWomen.map((shoe, i) => (
                 <Link
                   key={i}
                   to={shoe.to}
                   onClick={onDismiss}
-                  className="text-xs bg-zinc-100 py-2 rounded-md px-4"
+                  className="text-xs bg-zinc-100 dark:bg-zinc-700 dark:text-white py-2 rounded-md px-4"
                 >
                   {shoe.label}
                 </Link>
               ))}
             </div>
             <div className="flex flex-col gap-y-1">
-              <h1>Tümü</h1>
+              <h1 className="dark:text-white">Tümü</h1>
               <Link
                 to="/all-products"
                 onClick={onDismiss}
-                className="text-xs bg-zinc-100 py-2 rounded-md px-4"
+                className="text-xs bg-zinc-100 dark:bg-zinc-700 dark:text-white py-2 rounded-md px-4"
               >
                 Tüm Air Force'lar
               </Link>
@@ -111,11 +111,11 @@ const Navbar = () => {
                 className="text-gray-800 hover:text-[#763ebe] transition-colors duration-200 text-sm font-medium items-center  sm:w-28 w-full  py-2"
               >
                 {theme === "light" ? (
-                  <span className="text-xs bg-zinc-100 py-2 rounded-md px-4 w-full flex gap-x-5">
+                  <span className="text-xs bg-zinc-100 dark:bg-zinc-700 dark:text-white items-center py-2 rounded-md px-4 w-full flex gap-x-3">
                     <GoMoon /> Karanlık Mod
                   </span>
                 ) : (
-                  <span className="text-xs bg-zinc-100 py-2 rounded-md px-4 w-full flex gap-x-5">
+                  <span className="text-xs bg-zinc-100 dark:bg-zinc-700 dark:text-white items-center py-2 rounded-md px-4 w-full flex gap-x-3">
                     <GoSun /> Aydınlık Mod
                   </span>
                 )}
@@ -129,7 +129,7 @@ const Navbar = () => {
                     to={tab?.href}
                     key={tab.id}
                     onClick={onDismiss}
-                    className="px-4 w-full justify-center  py-1.5 rounded-md font-medium text-white bg-gradient-to-r from-black to-[#5B348F] transition-colors duration-500 flex gap-x-1 items-center text-sm"
+                    className="px-4 w-full justify-center  py-1.5 rounded-md dark:from-black dark:to-black font-medium text-white bg-gradient-to-r from-black to-[#5B348F] transition-colors duration-500 flex gap-x-1 items-center text-sm"
                   >
                     <tab.icon size={16} />
                     {tab.label}

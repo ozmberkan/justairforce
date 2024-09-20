@@ -167,7 +167,7 @@ const MenBest = () => {
                   key={size}
                   className={`px-2 py-1 border-2 rounded-md dark:text-white border-neutral-300 hover:bg-black hover:text-white ${
                     selectedSizes[sh.id] === size
-                      ? "bg-neutral-700 text-white dark:bg-white dark:text-black"
+                      ? "bg-neutral-700 text-white dark:bg-black dark:border-black dark:text-black"
                       : ""
                   }`}
                 >
