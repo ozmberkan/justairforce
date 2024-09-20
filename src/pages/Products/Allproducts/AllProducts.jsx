@@ -5,13 +5,26 @@ import { FaHeart } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { addFavToUser, updateUserCart } from "~/redux/slices/userSlice";
 import { addToCartThunk, addToFavThunk } from "~/redux/slices/cartSlice";
-import { allProducts } from "~/data/data";
+import { useCollection } from "react-firebase-hooks/firestore";
+import { collection } from "firebase/firestore";
+import { db } from "~/firebase/firebase";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const AllProducts = () => {
   const { user } = useSelector((store) => store.user);
   const dispatch = useDispatch();
 
   const [selectedSizes, setSelectedSizes] = useState({});
+  const [loadedImages, setLoadedImages] = useState({});
+
+  const shoesRef = collection(db, "shoes");
+  const [snapshot, loading] = useCollection(shoesRef);
+
+  const allproductsData = snapshot?.docs?.map((shoe) => ({
+    id: shoe.id,
+    ...shoe.data(),
+  }));
 
   const addToCart = async (item) => {
     if (!user) {
@@ -64,16 +77,20 @@ const AllProducts = () => {
     setSelectedSizes((prev) => ({ ...prev, [itemId]: size }));
   };
 
+  const handleImageLoad = (itemId) => {
+    setLoadedImages((prev) => ({ ...prev, [itemId]: true }));
+  };
+
   return (
     <div className="w-full px-7 py-6 flex flex-col gap-y-6">
       <h1 className="text-3xl font-semibold text-gray-700">
         Tüm Air Force'lar
       </h1>
-      <div className="grid sm:grid-cols-4 grid-cols-1 gap-5 ">
-        {allProducts.map((sh) => (
+      <div className="grid sm:grid-cols-4 grid-cols-1 gap-5">
+        {allproductsData?.map((sh) => (
           <div
             key={sh.id}
-            className="border p-3 flex flex-col gap-y-4 rounded-md "
+            className="border p-3 flex flex-col gap-y-4 rounded-md"
           >
             <div className="flex justify-between items-center">
               <div className="flex flex-col">
@@ -95,22 +112,42 @@ const AllProducts = () => {
                 </Link>
               </div>
             </div>
-            <img src={sh.image} className="rounded-md" />
-            <div className="sm:w-full py-2 flex flex-wrap justify-start   gap-2 ">
+
+            {/* Resim ve Skeleton */}
+            <div className="relative w-full h-64">
+              {!loadedImages[sh.id] && (
+                <Skeleton
+                  height="100%"
+                  width="100%"
+                  className="absolute top-0 left-0 rounded-md"
+                />
+              )}
+              <img
+                src={sh.image}
+                alt={sh.name}
+                className={`w-full h-full object-cover rounded-md transition-opacity duration-500 ${
+                  loadedImages[sh.id] ? "opacity-100" : "opacity-0"
+                }`}
+                onLoad={() => handleImageLoad(sh.id)}
+              />
+            </div>
+
+            <div className="sm:w-full py-2 flex flex-wrap justify-start gap-2">
               {sh?.sizes?.map((size) => (
                 <button
-                  onClick={() => handleSizeSelection(sh.id, size.size)}
-                  key={size.id}
+                  onClick={() => handleSizeSelection(sh.id, size)}
+                  key={size}
                   className={`px-2 py-1 border-2 rounded-md border-neutral-300 hover:bg-black hover:text-white ${
-                    selectedSizes[sh.id] === size.size
+                    selectedSizes[sh.id] === size
                       ? "bg-neutral-700 text-white"
                       : ""
                   }`}
                 >
-                  {size.size}
+                  {size}
                 </button>
               ))}
             </div>
+
             <button
               onClick={() => addToFavorites(sh)}
               className="w-full border p-2 rounded-md flex justify-center items-center gap-x-3 hover:border-red-500 transition-colors"

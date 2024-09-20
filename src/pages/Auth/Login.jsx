@@ -16,7 +16,6 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(loginscheme),
@@ -41,6 +40,7 @@ const Login = () => {
         admin: userDoc.data()?.admin || false,
         cart: userDoc.data()?.cart || [],
         favorites: userDoc.data().favorites || [],
+        hasbeenlogged: userDoc.data().hasbeenlogged || false,
       };
 
       dispatch(setUser(userData));

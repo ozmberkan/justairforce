@@ -1,17 +1,34 @@
-import { dailyWomen } from "~/data/data";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
-import { addFavToUser, updateUserCart } from "~/redux/slices/userSlice";
 import { toast } from "react-toastify";
-import { addToFavThunk } from "~/redux/slices/cartSlice";
-import { useState } from "react";
+import { addFavToUser, updateUserCart } from "~/redux/slices/userSlice";
+import { addToCartThunk, addToFavThunk } from "~/redux/slices/cartSlice";
+import { useCollection } from "react-firebase-hooks/firestore";
+import { collection } from "firebase/firestore";
+import { db } from "~/firebase/firebase";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const WomenDaily = () => {
   const { user } = useSelector((store) => store.user);
   const dispatch = useDispatch();
 
   const [selectedSizes, setSelectedSizes] = useState({});
+  const [loadedImages, setLoadedImages] = useState({});
+
+  const shoesRef = collection(db, "shoes");
+  const [snapshot] = useCollection(shoesRef);
+
+  const allproductsData = snapshot?.docs?.map((shoe) => ({
+    id: shoe.id,
+    ...shoe.data(),
+  }));
+
+  const womenDaily = allproductsData?.filter((shoe) =>
+    ["AF012", "AF003", "AF009", "AF001"].includes(shoe.id)
+  );
 
   const addToCart = async (item) => {
     if (!user) {
@@ -64,16 +81,20 @@ const WomenDaily = () => {
     setSelectedSizes((prev) => ({ ...prev, [itemId]: size }));
   };
 
+  const handleImageLoad = (itemId) => {
+    setLoadedImages((prev) => ({ ...prev, [itemId]: true }));
+  };
+
   return (
     <div className="w-full px-7 py-6 flex flex-col gap-y-6">
       <h1 className="text-3xl font-semibold text-gray-700">
         Kadın Günlük Giyim
       </h1>
       <div className="grid sm:grid-cols-4 grid-cols-1 gap-5">
-        {dailyWomen.map((sh) => (
+        {womenDaily?.map((sh) => (
           <div
             key={sh.id}
-            className="border p-3 flex flex-col gap-y-2 rounded-md bg-white"
+            className="border p-3 flex flex-col gap-y-4 rounded-md"
           >
             <div className="flex justify-between items-center">
               <div className="flex flex-col">
@@ -95,22 +116,42 @@ const WomenDaily = () => {
                 </Link>
               </div>
             </div>
-            <img src={sh.image} className="rounded-md" />
-            <div className="w-full py-2 flex flex-wrap  justify-start  gap-x-2">
+
+            {/* Resim ve Skeleton */}
+            <div className="relative w-full h-64">
+              {!loadedImages[sh.id] && (
+                <Skeleton
+                  height="100%"
+                  width="100%"
+                  className="absolute top-0 left-0 rounded-md"
+                />
+              )}
+              <img
+                src={sh.image}
+                alt={sh.name}
+                className={`w-full h-full object-cover rounded-md transition-opacity duration-500 ${
+                  loadedImages[sh.id] ? "opacity-100" : "opacity-0"
+                }`}
+                onLoad={() => handleImageLoad(sh.id)}
+              />
+            </div>
+
+            <div className="sm:w-full py-2 flex flex-wrap justify-start gap-2">
               {sh?.sizes?.map((size) => (
                 <button
-                  onClick={() => handleSizeSelection(sh.id, size.size)}
-                  key={size.id}
+                  onClick={() => handleSizeSelection(sh.id, size)}
+                  key={size}
                   className={`px-2 py-1 border-2 rounded-md border-neutral-300 hover:bg-black hover:text-white ${
-                    selectedSizes[sh.id] === size.size
+                    selectedSizes[sh.id] === size
                       ? "bg-neutral-700 text-white"
                       : ""
                   }`}
                 >
-                  {size.size}
+                  {size}
                 </button>
               ))}
             </div>
+
             <button
               onClick={() => addToFavorites(sh)}
               className="w-full border p-2 rounded-md flex justify-center items-center gap-x-3 hover:border-red-500 transition-colors"

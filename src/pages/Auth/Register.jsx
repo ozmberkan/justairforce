@@ -43,6 +43,7 @@ const Register = () => {
         displayName: data.displayName,
         emailVerified: user.emailVerified,
         admin: false,
+        hasbeenlogged: false,
         cart: [],
         favorites: [],
       };
