@@ -167,7 +167,7 @@ const WomenDaily = () => {
                   key={size}
                   className={`px-2 py-1 border-2 rounded-md dark:text-white border-neutral-300 hover:bg-black hover:text-white ${
                     selectedSizes[sh.id] === size
-                      ? "bg-neutral-700 text-white"
+                      ? "bg-neutral-700 text-white dark:bg-white dark:text-black"
                       : ""
                   }`}
                 >
@@ -175,18 +175,6 @@ const WomenDaily = () => {
                 </button>
               ))}
             </div>
-
-            <button
-              onClick={() => addToFavorites(sh)}
-              className="w-full border p-2 rounded-md dark:border-red-500 flex justify-center items-center gap-x-3 hover:border-red-500 transition-colors"
-            >
-              <span className="text-red-500">
-                <FaHeart size={18} />
-              </span>
-              <span className="font-semibold text-red-500">
-                Favorilere Ekle
-              </span>
-            </button>
           </div>
         ))}
       </div>

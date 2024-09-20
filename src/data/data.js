@@ -1,10 +1,9 @@
-import { FiHeart, FiShoppingCart, FiUser } from "react-icons/fi";
+import { FiHeart, FiUser } from "react-icons/fi";
 import { AiOutlineUserAdd } from "react-icons/ai";
 
 import Appstore from "~/assets/SocialMedia/appstore.svg";
 import Playstore from "~/assets/SocialMedia/googleplay.svg";
 import Huaweistore from "~/assets/SocialMedia/huawei.svg";
-import { name } from "@cloudinary/url-gen/actions/namedTransformation";
 
 export const navTabs = [
   {
@@ -56,9 +55,8 @@ export const loginForm = [
 
 
 export const userTabs = [
-  {id:1,to:"/cart",icon: FiShoppingCart,label: "Sepetim"},
-  {id:2,to:"/profile",icon: FiUser,label: "Profilim"},
-  {id:3,to:"/my-favorites",icon: FiHeart,label: "Favorilerim"},
+  {id:1,to:"/profile",icon: FiUser,label: "Profilim"},
+  {id:2,to:"/my-favorites",icon: FiHeart,label: "Favorilerim"},
 
 ]
 

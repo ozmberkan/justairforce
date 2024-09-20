@@ -1,10 +1,9 @@
-import { doc, updateDoc } from "firebase/firestore";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { db } from "~/firebase/firebase";
 import { deleteFavorites, updateUserFav } from "~/redux/slices/userSlice";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
+import Favbox from "./Favbox";
 
 const MyFavorites = () => {
   const { user } = useSelector((store) => store.user);
@@ -40,30 +39,7 @@ const MyFavorites = () => {
       >
         {user?.favorites.length > 0 ? (
           user?.favorites.map((sh) => (
-            <div
-              key={sh.id}
-              className="border dark:border-neutral-600 p-3 flex flex-col gap-y-2 rounded-md bg-white dark:bg-neutral-800"
-            >
-              <div className="flex justify-between items-center">
-                <div className="flex flex-col">
-                  <h1 className="font-bold text-2xl text-gray-700 dark:text-white">
-                    {sh.name}
-                  </h1>
-                  <span className="dark:text-white">{sh.price}₺</span>
-                </div>
-                <div>
-                  <button
-                    onClick={() => deleteFav(sh.id)}
-                    className="text-red-500 bg-red-100 px-4 py-2 rounded-md"
-                  >
-                    Sil
-                  </button>
-                </div>
-              </div>
-              {sh.image && (
-                <img src={sh.image} alt={sh.name} className="rounded-md" />
-              )}
-            </div>
+            <Favbox key={sh.id} sh={sh} deleteFav={deleteFav} />
           ))
         ) : (
           <div className="w-full bg-red-100 text-red-500 px-4 py-2 rounded">

@@ -165,9 +165,9 @@ const MenDaily = () => {
                 <button
                   onClick={() => handleSizeSelection(sh.id, size)}
                   key={size}
-                  className={`px-2 py-1 border-2 rounded-md border-neutral-300 hover:bg-black hover:text-white dark:text-white ${
+                  className={`px-2 py-1 border-2 rounded-md dark:text-white border-neutral-300 hover:bg-black hover:text-white ${
                     selectedSizes[sh.id] === size
-                      ? "bg-neutral-700 text-white"
+                      ? "bg-neutral-700 text-white dark:bg-white dark:text-black"
                       : ""
                   }`}
                 >

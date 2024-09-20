@@ -1,7 +1,7 @@
 import React from "react";
 import { FiTrash } from "react-icons/fi";
 
-const CartBox = ({ sh, deleteProduct, deleteFav }) => {
+const Favbox = ({ sh, deleteFav }) => {
   return (
     <div
       key={sh?.id}
@@ -30,7 +30,7 @@ const CartBox = ({ sh, deleteProduct, deleteFav }) => {
         </div>
         <div>
           <button
-            onClick={() => deleteProduct(sh?.id)}
+            onClick={() => deleteFav(sh?.id)}
             className="text-red-500 bg-red-100 p-3 rounded-md hover:bg-red-500 hover:text-white transition-colors duration-300"
           >
             <FiTrash size={18} />
@@ -50,4 +50,4 @@ const CartBox = ({ sh, deleteProduct, deleteFav }) => {
   );
 };
 
-export default CartBox;
+export default Favbox;

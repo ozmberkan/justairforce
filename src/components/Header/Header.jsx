@@ -1,5 +1,5 @@
 import Logo from "../../assets/Svg/Logo.svg";
-import { FiLogOut } from "react-icons/fi";
+import { FiLogOut, FiShoppingCart } from "react-icons/fi";
 import {
   MobileTabMen,
   MobileTabSingleShoes,
@@ -12,7 +12,7 @@ import { GoMoon, GoSun } from "react-icons/go";
 import { Link, useNavigate } from "react-router-dom";
 import TabMenu from "./Menu/TabMenu";
 import { useDispatch, useSelector } from "react-redux";
-import { FaSortDown } from "react-icons/fa";
+import { FaShoppingCart, FaSortDown } from "react-icons/fa";
 import { logoutUser } from "~/redux/slices/userSlice";
 import { signOut } from "firebase/auth";
 import { auth } from "~/firebase/firebase";
@@ -219,6 +219,19 @@ const Navbar = () => {
             </button>
             {user ? (
               <div className="flex items-center gap-x-4">
+                <div className="relative">
+                  <Link
+                    to="/cart"
+                    className="flex items-center gap-x-2 text-gray-800 hover:text-[#763ebe] transition-colors duration-200 text-sm font-semibold dark:text-white"
+                  >
+                    <FiShoppingCart /> Sepetim
+                  </Link>
+                  {user.cart.length > 0 && (
+                    <span className="w-5 h-5 bg-red-500 flex justify-center items-center absolute -top-2 -right-3 rounded-full text-xs text-white">
+                      {user?.cart.length}
+                    </span>
+                  )}
+                </div>
                 {userTabs.map((tab) => (
                   <Link
                     key={tab.id}
@@ -229,6 +242,7 @@ const Navbar = () => {
                     {tab.label}
                   </Link>
                 ))}
+
                 {user.admin === true ? (
                   <Link
                     to="/panel"
