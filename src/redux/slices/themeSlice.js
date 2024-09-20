@@ -22,8 +22,9 @@ export const themeSlice = createSlice({
 
 export const initializeTheme = () => {
   const savedTheme = localStorage.getItem("theme");
+
   if (savedTheme) {
-    document.documentElement.classList.add(savedTheme === 'dark' ? 'dark' : 'light');
+    document.documentElement.classList.add(savedTheme === 'dark' ? 'dark' : 'light'); 
   } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
     document.documentElement.classList.add('dark');
     localStorage.setItem("theme", 'dark');

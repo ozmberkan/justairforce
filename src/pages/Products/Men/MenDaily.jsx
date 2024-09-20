@@ -121,12 +121,23 @@ const MenDaily = () => {
 
             {/* Resim ve Skeleton */}
             <div className="relative w-full h-64">
-              {!loadedImages[sh.id] && (
-                <Skeleton
-                  height="100%"
-                  width="100%"
-                  className="absolute top-0 left-0 rounded-md"
-                />
+              {!loadedImages[sh.id] && theme === "light" && (
+                <SkeletonTheme baseColor="#ccc" highlightColor="#fff">
+                  <Skeleton
+                    height="100%"
+                    width="100%"
+                    className="absolute top-0 left-0 rounded-md "
+                  />
+                </SkeletonTheme>
+              )}
+              {!loadedImages[sh.id] && theme === "dark" && (
+                <SkeletonTheme baseColor="#444" highlightColor="#202020">
+                  <Skeleton
+                    height="100%"
+                    width="100%"
+                    className="absolute top-0 left-0 rounded-md "
+                  />
+                </SkeletonTheme>
               )}
               <img
                 src={sh.image}

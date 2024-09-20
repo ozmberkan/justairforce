@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -27,9 +27,13 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
 import AdminPanel from "./pages/Admin/AdminPanel";
+import { initializeTheme } from "./redux/slices/themeSlice";
 
 const App = () => {
   const { user } = useSelector((store) => store.user);
+  useEffect(() => {
+    initializeTheme();
+  }, []);
   return (
     <Router>
       <div className="flex flex-col min-h-screen">

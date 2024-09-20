@@ -8,11 +8,12 @@ import { addToCartThunk, addToFavThunk } from "~/redux/slices/cartSlice";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { collection } from "firebase/firestore";
 import { db } from "~/firebase/firebase";
-import Skeleton from "react-loading-skeleton";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 const AllProducts = () => {
   const { user } = useSelector((store) => store.user);
+  const { theme } = useSelector((store) => store.theme);
   const dispatch = useDispatch();
 
   const [selectedSizes, setSelectedSizes] = useState({});
@@ -117,12 +118,23 @@ const AllProducts = () => {
 
             {/* Resim ve Skeleton */}
             <div className="relative w-full h-64">
-              {!loadedImages[sh.id] && (
-                <Skeleton
-                  height="100%"
-                  width="100%"
-                  className="absolute top-0 left-0 rounded-md"
-                />
+              {!loadedImages[sh.id] && theme === "light" && (
+                <SkeletonTheme baseColor="#ccc" highlightColor="#fff">
+                  <Skeleton
+                    height="100%"
+                    width="100%"
+                    className="absolute top-0 left-0 rounded-md "
+                  />
+                </SkeletonTheme>
+              )}
+              {!loadedImages[sh.id] && theme === "dark" && (
+                <SkeletonTheme baseColor="#444" highlightColor="#202020">
+                  <Skeleton
+                    height="100%"
+                    width="100%"
+                    className="absolute top-0 left-0 rounded-md "
+                  />
+                </SkeletonTheme>
               )}
               <img
                 src={sh.image}

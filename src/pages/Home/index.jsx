@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import Announcement from "~/components/Home/Announcement";
 import Carousel from "~/components/Home/Carousel";
@@ -8,10 +7,6 @@ import SpringModal from "~/components/UI/Modal";
 
 const Home = () => {
   const { user } = useSelector((store) => store.user);
-
-  useEffect(() => {
-    localStorage.setItem("theme", "light");
-  }, []);
 
   return (
     <>
