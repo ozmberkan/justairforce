@@ -186,14 +186,14 @@ const Navbar = () => {
                 <Link
                   to={tab?.href}
                   key={tab.id}
-                  className="text-gray-800 hover:text-[#763ebe] transition-colors duration-200 text-sm font-medium flex gap-x-1 dark:text-white"
+                  className="text-gray-800 hover:text-[#763ebe] dark:hover:text-[#763ebe] transition-colors duration-200 text-sm font-medium flex gap-x-1 dark:text-white"
                 >
                   <TabMenu tab={tab} /> <FaSortDown />
                 </Link>
               ))}
               <Link
                 to="/all-products"
-                className="text-gray-800 hover:text-[#763ebe] transition-colors duration-200 text-sm font-medium dark:text-white"
+                className="text-gray-800 hover:text-[#763ebe] dark:hover:text-[#763ebe] transition-colors duration-200 text-sm font-medium dark:text-white"
               >
                 Tüm Air Force'lar
               </Link>
@@ -202,18 +202,18 @@ const Navbar = () => {
         )}
         {/* Sağ Bölüm (Kullanıcı İşlemleri ve Sepet) */}
         {!isTabletOrMobile && (
-          <div className="flex items-center gap-x-6">
+          <div className="flex items-center gap-x-4">
             <button
               onClick={toggleTheme}
-              className="text-gray-800 hover:text-[#763ebe] transition-colors duration-200 text-sm font-medium items-center  w-28 dark:text-white"
+              className="px-4 py-1.5 rounded-md font-medium duration-500 dark:bg-neutral-700 dark:hover:bg-neutral-600 dark:text-neutral-200  text-white bg-black hover:bg-neutral-700 transition-colors  flex gap-x-1 items-center text-sm"
             >
               {theme === "light" ? (
-                <span className=" flex gap-x-1 items-center">
-                  <GoMoon /> Karanlık Mod
+                <span className=" flex gap-x-2 items-center">
+                  <GoMoon className="text-blue-200" /> Karanlık
                 </span>
               ) : (
-                <span className=" flex gap-x-1 items-center">
-                  <GoSun /> Aydınlık Mod
+                <span className=" flex gap-x-2 items-center">
+                  <GoSun className="text-yellow-500" /> Aydınlık
                 </span>
               )}
             </button>
@@ -262,12 +262,12 @@ const Navbar = () => {
                 </button>
               </div>
             ) : (
-              <div className="flex items-center gap-x-4">
+              <div className="flex items-center gap-x-3">
                 {rightTab.map((tab) => (
                   <Link
                     to={tab?.href}
                     key={tab.id}
-                    className="px-4 py-1.5 rounded-md font-medium duration-500 dark:bg-neutral-700 dark:text-neutral-200  text-white bg-black hover:bg-neutral-700 transition-colors  flex gap-x-1 items-center text-sm"
+                    className="px-4 py-1.5 rounded-md font-medium duration-500 dark:bg-neutral-700 dark:hover:bg-neutral-600 dark:text-neutral-200  text-white bg-black hover:bg-neutral-700 transition-colors  flex gap-x-1 items-center text-sm"
                   >
                     <tab.icon size={16} />
                     {tab.label}
