@@ -224,7 +224,7 @@ const Navbar = () => {
                 <div className="relative">
                   <Link
                     to="/cart"
-                    className="flex items-center gap-x-2 text-gray-800 hover:text-[#763ebe] transition-colors duration-200 text-sm font-semibold dark:text-white"
+                    className="flex items-center gap-x-2 text-gray-800 dark:hover:text-[#763ebe] hover:text-[#763ebe] transition-colors duration-200 text-sm font-semibold dark:text-white"
                   >
                     <FiShoppingCart /> Sepetim
                   </Link>
@@ -238,7 +238,7 @@ const Navbar = () => {
                   <Link
                     key={tab.id}
                     to={tab.to}
-                    className="flex items-center gap-x-2 text-gray-800 hover:text-[#763ebe] transition-colors duration-200 text-sm font-semibold dark:text-white"
+                    className="flex items-center gap-x-2 text-gray-800 dark:hover:text-[#763ebe] hover:text-[#763ebe] transition-colors duration-200 text-sm font-semibold dark:text-white"
                   >
                     <tab.icon />
                     {tab.label}
@@ -248,7 +248,7 @@ const Navbar = () => {
                 {user.admin === true ? (
                   <Link
                     to="/panel"
-                    className="flex items-center gap-x-2 text-gray-800 hover:text-[#763ebe] transition-colors duration-200 text-sm font-semibold dark:text-white"
+                    className="flex items-center gap-x-2 text-gray-800 dark:hover:text-[#763ebe] hover:text-[#763ebe] transition-colors duration-200 text-sm font-semibold dark:text-white"
                   >
                     <BsDatabaseLock />
                     Panel
@@ -257,7 +257,7 @@ const Navbar = () => {
 
                 <button
                   onClick={logOut}
-                  className="flex items-center gap-x-2  transition-colors duration-200 text-sm font-medium  rounded-full px-2 py-1 bg-red-500 text-white hover:bg-red-600 dark:bg-red-200 dark:text-red-500  "
+                  className="flex items-center gap-x-2 dark:hover:bg-red-500 dark:hover:text-white  transition-colors duration-200 text-sm font-medium  rounded-full px-2 py-1 bg-red-500 text-white hover:bg-red-600 dark:bg-red-200 dark:text-red-500  "
                 >
                   <FiLogOut />
                   Çıkış Yap

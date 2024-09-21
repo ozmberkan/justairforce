@@ -7,8 +7,8 @@ import { db } from "~/firebase/firebase";
 const ProductsList = ({ productData, handleProductEdit }) => {
   const deleteProduct = async (id) => {
     try {
-      const productRef = doc(db, "shoes", id); // Burada sadece doc() kullanıyoruz.
-      await deleteDoc(productRef); // deleteDoc ile ürünü siliyoruz.
+      const productRef = doc(db, "shoes", id);
+      await deleteDoc(productRef);
       toast.success("Ürün Başarıyla Silindi!");
     } catch (error) {
       toast.error("Ürün Silinirken Bir Hata Oluştu! " + error.message);
@@ -16,9 +16,9 @@ const ProductsList = ({ productData, handleProductEdit }) => {
   };
 
   return (
-    <div className="relative overflow-x-auto border rounded-md">
-      <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-neutral-700 dark:text-neutral-400">
+    <div className="relative overflow-x-auto border rounded-md transition-colors duration-500 dark:border-neutral-500 ">
+      <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
+        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-neutral-700 dark:text-neutral-400 ">
           <tr>
             <th scope="col" className="px-6 py-3">
               ID

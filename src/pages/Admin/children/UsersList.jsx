@@ -3,8 +3,8 @@ import { FiEdit } from "react-icons/fi";
 
 const UsersList = ({ userData, handleEdit }) => {
   return (
-    <div className="relative overflow-x-auto border rounded-md">
-      <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <div className="relative overflow-x-auto border rounded-md transition-colors duration-500 dark:border-neutral-500">
+      <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 ">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-neutral-700 dark:text-neutral-400">
           <tr>
             <th scope="col" className="px-6 py-3">
