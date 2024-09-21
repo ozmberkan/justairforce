@@ -57,6 +57,11 @@ export const userTabs = [
   { id: 1, to: "/profile", icon: FiUser, label: "Profilim" },
   { id: 2, to: "/my-favorites", icon: FiHeart, label: "Favorilerim" },
 ];
+export const mobileuserTabs = [
+  { id: 1, to: "/cart", icon: FiUser, label: "Sepetim" },
+  { id: 2, to: "/profile", icon: FiUser, label: "Profilim" },
+  { id: 3, to: "/my-favorites", icon: FiHeart, label: "Favorilerim" },
+];
 
 export const footerTabs = [
   { id: 1, to: "/", label: "Anasayfa" },

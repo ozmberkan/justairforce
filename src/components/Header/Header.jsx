@@ -4,6 +4,7 @@ import {
   MobileTabMen,
   MobileTabSingleShoes,
   MobileTabWomen,
+  mobileuserTabs,
   navTabs,
   rightTab,
   userTabs,
@@ -138,21 +139,31 @@ const Navbar = () => {
                   </Link>
                 ))}
               {user && (
-                <div className="w-full flex flex-col gap-y-2">
-                  {userTabs.map((tab) => (
+                <div className="w-full grid grid-cols-2 gap-2">
+                  {mobileuserTabs.map((tab) => (
                     <Link
                       key={tab.id}
                       to={tab.to}
                       onClick={onDismiss}
-                      className="flex  w-full items-center gap-x-2 text-gray-800 hover:text-[#763ebe] transition-colors duration-200 text-sm font-semibold"
+                      className="flex bg-zinc-100 p-2 rounded-md  w-full items-center gap-x-2 text-gray-800 hover:text-[#763ebe] transition-colors duration-200 text-sm font-semibold"
                     >
                       <tab.icon />
                       {tab.label}
                     </Link>
                   ))}
+                  {user.admin === true && (
+                    <Link
+                      className="flex bg-zinc-100 p-2 rounded-md  w-full items-center gap-x-2 text-gray-800 hover:text-[#763ebe] transition-colors duration-200 text-sm font-semibold"
+                      to="/panel"
+                      onClick={onDismiss}
+                    >
+                      <BsDatabaseLock />
+                      Panel
+                    </Link>
+                  )}
                   <button
                     onClick={logOut}
-                    className="flex items-center gap-x-2  transition-colors duration-200 text-sm font-medium border rounded-full px-2 py-1 bg-red-500 text-white hover:bg-red-600 "
+                    className="flex items-center gap-x-2 col-span-2  transition-colors duration-200 text-sm font-medium border rounded-md p-2 bg-red-500 text-white hover:bg-red-600 "
                   >
                     <FiLogOut />
                     Çıkış Yap
