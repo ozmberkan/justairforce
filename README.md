@@ -1,8 +1,21 @@
-# React + Vite
+# JustAirForce 👟
+JustAirForce, kullanıcıların favori Air Force ayakkabılarını kolayca satın alabilecekleri, kişisel hesaplarını yönetebilecekleri ve modern bir e-ticaret deneyimi yaşayabilecekleri bir platformdur.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Özellikler 💡
+🔐 Kayıt Ol ve Giriş Yap: Kullanıcılar, güvenli bir şekilde hesap oluşturabilir ve giriş yapabilir.<br/>
+🛒 Ürün Satın Alma: Kullanıcılar, favori Air Force modellerini inceleyip satın alabilirler.<br/>
+📱 Mobil Uyumlu Tasarım: Tüm cihazlar için optimize edilmiş, responsive bir web arayüzü.<br/>
+🎨 Modern UI/UX: Kullanıcı dostu ve şık arayüz, TailwindCSS ile inşa edilmiştir.<br/>
+🚀 Teknolojiler: Proje, React, TailwindCSS, Firebase ve Stripe gibi modern teknolojiler kullanılarak geliştirilmiştir.<br/>
 
-Currently, two official plugins are available:
+## Kullanılan Teknolojiler 🛠️
+**React**: Kullanıcı arayüzü geliştirmek için kullanılan JavaScript kütüphanesi.<br/>
+**TailwindCSS**: Hızlı ve özelleştirilebilir CSS framework.<br/>
+**Firebase**: Kimlik doğrulama ve veritabanı yönetimi için.<br/>
+**React Router Dom**: Sayfalar arası gezinme yönetimi.<br/>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Katkı Sağlamak 🎯
+Her türlü katkıya açığım!  Geri bildirimleriniz de çok önemli!
+
+## Demo 🌐
+Projenin canlı demosuna şu bağlantıdan ulaşabilirsiniz: <a href="https://justairforce.vercel.app">Just Air Force</a>
