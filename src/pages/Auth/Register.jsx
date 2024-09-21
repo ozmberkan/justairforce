@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { setUser } from "~/redux/slices/userSlice";
 import { useNavigate } from "react-router-dom";
 import Logo from "~/assets/Svg/Logo.svg";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -52,10 +53,10 @@ const Register = () => {
 
       const userRef = doc(db, "users", user.uid);
       await setDoc(userRef, userData);
-
       navigate("/");
+      toast.success("Kayıt Başarılı");
     } catch (error) {
-      console.error("Kayıt Hatası", error);
+      toast.error("Kayıt Başarısız");
     }
   };
   return (

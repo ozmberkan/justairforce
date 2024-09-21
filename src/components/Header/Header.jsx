@@ -24,6 +24,7 @@ import { useState } from "react";
 import { BsDatabaseLock } from "react-icons/bs";
 import "react-spring-bottom-sheet/dist/style.css";
 import { setTheme } from "~/redux/slices/themeSlice";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const { user } = useSelector((store) => store.user);
@@ -39,6 +40,7 @@ const Navbar = () => {
       await signOut(auth);
       dispatch(logoutUser());
       navigate("/");
+      toast.success("Çıkış Yapıldı");
     } catch (error) {
       console.log(error);
     }

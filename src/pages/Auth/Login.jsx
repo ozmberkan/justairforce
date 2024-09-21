@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { setUser } from "~/redux/slices/userSlice";
 import { useNavigate } from "react-router-dom";
 import Logo from "~/assets/Svg/Logo.svg";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -44,10 +45,10 @@ const Login = () => {
       };
 
       dispatch(setUser(userData));
-      console.log("giriş yapıldı");
+      toast.success("Giriş Başarılı");
       navigate("/");
     } catch (error) {
-      console.error("giriş hatası", error);
+      toast.error("Giriş Başarısız");
     }
   };
   return (
