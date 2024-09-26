@@ -4,7 +4,6 @@ import { AiOutlineUserAdd } from "react-icons/ai";
 import Appstore from "~/assets/SocialMedia/appstore.svg";
 import Playstore from "~/assets/SocialMedia/googleplay.svg";
 import Huaweistore from "~/assets/SocialMedia/huawei.svg";
-import { placeholder } from "@cloudinary/react";
 
 export const navTabs = [
   {
