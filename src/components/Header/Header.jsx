@@ -241,9 +241,9 @@ const Navbar = () => {
                   >
                     <FiShoppingCart /> Sepetim
                   </Link>
-                  {user.cart.length > 0 && (
+                  {user?.cart?.length > 0 && (
                     <span className="w-5 h-5 bg-red-500 flex justify-center items-center absolute -top-2 -right-3 rounded-full text-xs text-white">
-                      {user?.cart.length}
+                      {user?.cart?.length}
                     </span>
                   )}
                 </div>
