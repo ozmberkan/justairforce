@@ -10,6 +10,8 @@ const Cart = () => {
   const { user } = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const [animationParent] = useAutoAnimate();
+
+  
   const deleteProduct = async (id) => {
     try {
       if (!user || !user.cart) {
